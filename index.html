@@ -1,68 +1,63 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="th" data-lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dịch vụ công Kho bạc Nhà nước — Thông minh · Hỗ trợ 24/7 · Minh bạch</title>
-<meta name="description" content="Trang demo giới thiệu dịch vụ công trực tuyến Kho bạc Nhà nước: hệ thống thông minh và ổn định, hỗ trợ 24/7, minh bạch và nhanh chóng trong mọi quy trình.">
+<title>Siam Treasury Portal</title>
+<meta name="description" id="metaDesc" content="">
 <meta name="robots" content="noindex, nofollow">
 
 <!--
   ============================================================
   TRANG DEMO / MOCKUP — KHÔNG PHẢI TRANG CHÍNH THỨC
   ------------------------------------------------------------
-  Toàn bộ số liệu, hình ảnh, video, lời chứng thực và biểu mẫu
-  trong trang này là DỮ LIỆU GIẢ LẬP dùng cho mục đích trình bày
-  thiết kế. Form không gửi dữ liệu đi bất kỳ đâu (chỉ xử lý
-  client-side) và KHÔNG thu thập thông tin thẻ/tài khoản/OTP.
+  "Siam Treasury Portal" là TÊN HƯ CẤU, không phải cơ quan có
+  thật của Thái Lan. Toàn bộ số liệu, hình ảnh, video, lời chứng
+  thực và biểu mẫu là DỮ LIỆU GIẢ LẬP. Form không gửi dữ liệu đi
+  đâu (chỉ xử lý client-side) và KHÔNG thu thập thẻ/mật khẩu/OTP.
 
-  Ảnh & video: hotlink từ Pexels (miễn phí, Pexels License).
-  Nếu link nào chết, hãy thay bằng URL mới từ pexels.com.
-  Các chỗ cần thay đều được đánh dấu bằng comment bắt đầu bằng "PEXELS:".
+  NGÔN NGỮ: trang chỉ hỗ trợ tiếng Thái (mặc định) và tiếng Anh.
+  Mọi chuỗi hiển thị nằm trong i18n.js — sửa bản dịch ở đó, đừng
+  sửa trong file này. Đổi ngôn ngữ mặc định tại DEFAULT_LANG.
+
+  Ảnh & video hotlink từ Pexels (miễn phí, Pexels License). Chỗ
+  cần thay được đánh dấu bằng comment bắt đầu bằng "PEXELS:".
   ============================================================
 -->
 
 <link rel="preconnect" href="https://images.pexels.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 /* ============ TOKENS ============ */
 :root{
-  --navy-900:#071c34;
-  --navy-800:#0b2a4a;
-  --navy-700:#123a63;
-  --navy-600:#1b4d80;
-  --blue-500:#1f6fb2;
-  --blue-300:#7fb5e0;
-  --blue-50:#eef6fc;
-  --red-600:#c62828;
-  --red-500:#e03131;
-  --gold-500:#d9a227;
-  --gold-300:#f0cf7a;
+  --navy-900:#071c34; --navy-800:#0b2a4a; --navy-700:#123a63; --navy-600:#1b4d80;
+  --blue-500:#1f6fb2; --blue-300:#7fb5e0; --blue-50:#eef6fc;
+  --red-600:#c62828; --red-500:#e03131;
+  --gold-500:#d9a227; --gold-300:#f0cf7a;
   --green-600:#18794e;
-  --ink:#12212f;
-  --ink-soft:#4b5f72;
-  --ink-faint:#7f909f;
-  --line:#dfe7ee;
-  --bg:#ffffff;
-  --bg-alt:#f5f8fb;
-  --radius:14px;
-  --radius-lg:22px;
+  --ink:#12212f; --ink-soft:#4b5f72; --ink-faint:#7f909f;
+  --line:#dfe7ee; --bg:#ffffff; --bg-alt:#f5f8fb;
+  --radius:14px; --radius-lg:22px;
   --shadow-sm:0 1px 2px rgba(7,28,52,.06),0 2px 8px rgba(7,28,52,.06);
   --shadow-md:0 8px 28px rgba(7,28,52,.10);
   --shadow-lg:0 24px 60px rgba(7,28,52,.16);
-  --maxw:1180px;
-  --ease:cubic-bezier(.16,.84,.44,1);
+  --maxw:1180px; --ease:cubic-bezier(.16,.84,.44,1);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  margin:0;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  color:var(--ink);background:var(--bg);line-height:1.65;font-size:16.5px;
-  overflow-x:hidden;
+  margin:0;font-family:'Inter','Noto Sans Thai',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.65;font-size:16.5px;overflow-x:hidden;
 }
+/* Chữ Thái cao hơn chữ Latin: cần line-height thoáng hơn và bỏ letter-spacing âm */
+html[lang="th"] body{font-family:'Noto Sans Thai','Inter',system-ui,sans-serif;line-height:1.9}
+html[lang="th"] h1,html[lang="th"] h2,html[lang="th"] h3,html[lang="th"] h4{letter-spacing:0;line-height:1.5}
+html[lang="th"] .stat__num,html[lang="th"] .frow__badge .k{line-height:1.25}
+html[lang="th"] .eyebrow{letter-spacing:.06em}
+
 img{max-width:100%;display:block}
 a{color:var(--blue-500);text-decoration:none}
 a:hover{text-decoration:underline}
@@ -88,8 +83,8 @@ h2.sec-title{font-size:clamp(1.75rem,3.6vw,2.6rem)}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   padding:14px 26px;border-radius:999px;font-weight:600;font-size:.98rem;
-  border:1px solid transparent;cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s var(--ease),background .18s;
-  text-decoration:none!important;font-family:inherit;
+  border:1px solid transparent;cursor:pointer;font-family:inherit;text-decoration:none!important;
+  transition:transform .18s var(--ease),box-shadow .18s var(--ease),background .18s;
 }
 .btn:hover{transform:translateY(-2px)}
 .btn--primary{background:linear-gradient(135deg,var(--red-600),#a91d1d);color:#fff;box-shadow:0 8px 22px rgba(198,40,40,.32)}
@@ -103,17 +98,27 @@ h2.sec-title{font-size:clamp(1.75rem,3.6vw,2.6rem)}
 /* ============ DEMO BANNER ============ */
 .demo-bar{
   background:repeating-linear-gradient(135deg,#2b2b2b,#2b2b2b 12px,#3a3a3a 12px,#3a3a3a 24px);
-  color:#ffe08a;font-size:.8rem;text-align:center;padding:9px 16px;font-weight:600;letter-spacing:.02em;
+  color:#ffe08a;font-size:.8rem;text-align:center;padding:9px 16px;font-weight:600;
 }
 .demo-bar b{color:#fff}
 
-/* ============ HEADER ============ */
+/* ============ TOP STRIP + LANG ============ */
 .topstrip{background:var(--navy-900);color:#c6d8e8;font-size:.8rem}
 .topstrip .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:38px;flex-wrap:wrap}
 .topstrip a{color:#e8f1f8}
 .topstrip .dot{width:7px;height:7px;border-radius:50%;background:#39d98a;display:inline-block;box-shadow:0 0 0 3px rgba(57,217,138,.22);animation:pulse 2.4s infinite}
 @keyframes pulse{50%{box-shadow:0 0 0 7px rgba(57,217,138,0)}}
+.right-group{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 
+.langsw{display:inline-flex;border:1px solid rgba(255,255,255,.28);border-radius:999px;overflow:hidden}
+.langsw button{
+  font-family:inherit;font-size:.74rem;font-weight:700;letter-spacing:.06em;
+  background:transparent;color:#c6d8e8;border:0;padding:5px 12px;cursor:pointer;transition:background .18s,color .18s;
+}
+.langsw button:hover{background:rgba(255,255,255,.12);color:#fff}
+.langsw button[aria-pressed="true"]{background:var(--gold-500);color:#241a03}
+
+/* ============ HEADER ============ */
 header.site{
   position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);
   backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
@@ -129,9 +134,7 @@ header.site .wrap{display:flex;align-items:center;gap:28px;min-height:74px}
 .brand__txt strong{display:block;font-size:1.02rem;color:var(--navy-800);line-height:1.15;letter-spacing:-.01em}
 .brand__txt span{display:block;font-size:.72rem;color:var(--ink-faint);letter-spacing:.1em;text-transform:uppercase}
 nav.main{margin-left:auto;display:flex;align-items:center;gap:4px}
-nav.main a{
-  color:var(--navy-800);font-weight:500;font-size:.94rem;padding:9px 13px;border-radius:8px;
-}
+nav.main a{color:var(--navy-800);font-weight:500;font-size:.94rem;padding:9px 13px;border-radius:8px}
 nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy-700)}
 .nav-cta{margin-left:10px}
 .burger{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:10px;padding:9px 11px;cursor:pointer}
@@ -154,36 +157,34 @@ nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy
 .hero__badges div{display:flex;align-items:center;gap:9px}
 .hero__badges svg{width:18px;height:18px;flex-shrink:0;color:var(--gold-300)}
 .hero__tag{
-  display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 12px;border-radius:999px;
+  display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border-radius:999px;
   background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);
   font-size:.83rem;font-weight:600;color:#eaf3fa;margin-bottom:26px;backdrop-filter:blur(6px);
 }
-.hero__tag em{font-style:normal;color:var(--gold-300)}
 
-/* ============ STAT STRIP ============ */
-.stats{background:var(--navy-800);color:#fff;padding:0}
+/* ============ STATS ============ */
+.stats{background:var(--navy-800);color:#fff}
 .stats__grid{display:grid;grid-template-columns:repeat(4,1fr)}
 .stat{padding:34px 26px;border-left:1px solid rgba(255,255,255,.10);text-align:center}
 .stat:first-child{border-left:0}
-.stat__num{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:800;color:var(--gold-300);line-height:1;letter-spacing:-.03em}
+.stat__num{font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:800;color:var(--gold-300);line-height:1;letter-spacing:-.03em}
 .stat__lbl{font-size:.86rem;color:#a9c4dc;margin-top:9px}
 
-/* ============ PILLAR CARDS ============ */
+/* ============ PILLARS ============ */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .pillar{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
-  display:flex;flex-direction:column;box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;box-shadow:var(--shadow-sm);position:relative;
   transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
-  position:relative;
 }
 .pillar:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);border-color:var(--blue-300)}
 .pillar__media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--navy-700)}
 .pillar__media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .pillar:hover .pillar__media img{transform:scale(1.07)}
 .pillar__rank{
-  position:absolute;top:14px;left:14px;z-index:2;
-  background:var(--red-600);color:#fff;font-weight:800;font-size:.74rem;letter-spacing:.1em;
-  padding:6px 13px;border-radius:999px;text-transform:uppercase;box-shadow:0 4px 14px rgba(0,0,0,.3);
+  position:absolute;top:14px;left:14px;z-index:2;background:var(--red-600);color:#fff;
+  font-weight:800;font-size:.74rem;letter-spacing:.1em;padding:6px 13px;border-radius:999px;
+  text-transform:uppercase;box-shadow:0 4px 14px rgba(0,0,0,.3);
 }
 .pillar__body{padding:26px 26px 30px;flex:1;display:flex;flex-direction:column}
 .pillar__icon{
@@ -196,7 +197,7 @@ nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy
 .pillar ul{list-style:none;padding:0;margin:0 0 20px;font-size:.92rem}
 .pillar li{display:flex;gap:10px;padding:5px 0;color:var(--ink-soft)}
 .pillar li::before{
-  content:"";flex-shrink:0;width:18px;height:18px;margin-top:4px;border-radius:50%;
+  content:"";flex-shrink:0;width:18px;height:18px;margin-top:5px;border-radius:50%;
   background:var(--blue-50) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f6fb2' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/11px no-repeat;
 }
 .pillar__foot{margin-top:auto;padding-top:16px;border-top:1px dashed var(--line);font-size:.85rem;color:var(--ink-faint)}
@@ -204,21 +205,16 @@ nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy
 
 /* ============ VIDEO ============ */
 .videoblock{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center}
-.player{
-  position:relative;border-radius:var(--radius-lg);overflow:hidden;background:#000;
-  box-shadow:var(--shadow-lg);aspect-ratio:16/9;
-}
+.player{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:#000;box-shadow:var(--shadow-lg);aspect-ratio:16/9}
 .player video{width:100%;height:100%;object-fit:cover;display:block}
 .player__overlay{
   position:absolute;inset:0;display:grid;place-items:center;cursor:pointer;
-  background:linear-gradient(0deg,rgba(7,28,52,.55),rgba(7,28,52,.18));
-  transition:opacity .35s var(--ease);
+  background:linear-gradient(0deg,rgba(7,28,52,.55),rgba(7,28,52,.18));transition:opacity .35s var(--ease);
 }
 .player__overlay.is-hidden{opacity:0;pointer-events:none}
 .player__play{
   width:82px;height:82px;border-radius:50%;background:rgba(255,255,255,.94);
-  display:grid;place-items:center;box-shadow:0 14px 40px rgba(0,0,0,.42);
-  transition:transform .25s var(--ease);
+  display:grid;place-items:center;box-shadow:0 14px 40px rgba(0,0,0,.42);transition:transform .25s var(--ease);
 }
 .player__overlay:hover .player__play{transform:scale(1.09)}
 .player__play svg{width:30px;height:30px;color:var(--red-600);margin-left:4px}
@@ -237,7 +233,7 @@ nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy
 .vlist li:last-child{border-bottom:0}
 .vlist .t{font-size:.72rem;font-weight:800;color:var(--red-600);letter-spacing:.06em;min-width:44px;padding-top:2px}
 .vlist strong{display:block;color:var(--navy-800);font-size:.98rem}
-.vlist span{font-size:.9rem;color:var(--ink-soft)}
+.vlist span.d{font-size:.9rem;color:var(--ink-soft)}
 
 /* ============ FEATURE ROWS ============ */
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:96px}
@@ -247,30 +243,26 @@ nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy
 .frow__media img{border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);aspect-ratio:4/3;object-fit:cover;width:100%}
 .frow__media::after{
   content:"";position:absolute;inset:auto -18px -18px auto;width:62%;height:62%;z-index:-1;
-  border-radius:var(--radius-lg);
-  background:linear-gradient(135deg,var(--blue-50),rgba(217,162,39,.22));
+  border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--blue-50),rgba(217,162,39,.22));
 }
 .frow__badge{
   position:absolute;bottom:-20px;left:-20px;background:#fff;border-radius:var(--radius);
-  padding:16px 20px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:13px;max-width:250px;
+  padding:16px 20px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:13px;max-width:260px;
 }
-.frow__badge .k{font-size:1.5rem;font-weight:800;color:var(--navy-800);line-height:1}
-.frow__badge .d{font-size:.78rem;color:var(--ink-soft);line-height:1.35}
+.frow__badge .k{font-size:1.45rem;font-weight:800;color:var(--navy-800);line-height:1}
+.frow__badge .d{font-size:.78rem;color:var(--ink-soft);line-height:1.4}
 .frow h3{font-size:clamp(1.5rem,2.6vw,2.05rem);color:var(--navy-800)}
 .chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
-.chip{
-  font-size:.8rem;font-weight:600;padding:7px 14px;border-radius:999px;
-  background:var(--blue-50);color:var(--navy-700);border:1px solid #d5e6f4;
-}
+.chip{font-size:.8rem;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--blue-50);color:var(--navy-700);border:1px solid #d5e6f4}
 .chip--gold{background:#fdf6e3;color:#8a6510;border-color:#f0e0b6}
 .chip--green{background:#eaf7f0;color:var(--green-600);border-color:#c9e9d8}
 
 /* ============ PROCESS ============ */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s;position:relative}
-.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 22px;position:relative;box-shadow:var(--shadow-sm)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 22px;box-shadow:var(--shadow-sm)}
 .step::before{
-  counter-increment:s;content:"0" counter(s);
-  font-size:2.4rem;font-weight:800;color:#e7eff6;line-height:1;display:block;margin-bottom:8px;letter-spacing:-.04em;
+  counter-increment:s;content:"0" counter(s);font-size:2.4rem;font-weight:800;color:#e7eff6;
+  line-height:1;display:block;margin-bottom:8px;letter-spacing:-.04em;
 }
 .step h4{font-size:1.03rem;color:var(--navy-800);margin-bottom:7px}
 .step p{font-size:.9rem;color:var(--ink-soft);margin:0}
@@ -281,6 +273,7 @@ nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy
 .quote{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
 .quote__stars{color:var(--gold-500);letter-spacing:2px;font-size:.95rem;margin-bottom:14px}
 .quote p{font-size:.98rem;color:var(--ink);font-style:italic;margin-bottom:22px}
+html[lang="th"] .quote p{font-style:normal}
 .quote__who{display:flex;align-items:center;gap:13px;margin-top:auto}
 .quote__who img{width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0}
 .quote__who b{display:block;font-size:.94rem;color:var(--navy-800)}
@@ -298,9 +291,9 @@ nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy
 .infolist{list-style:none;padding:0;margin:30px 0 0}
 .infolist li{display:flex;gap:15px;padding:15px 0;border-top:1px solid rgba(255,255,255,.13)}
 .infolist li:first-child{border-top:0}
-.infolist svg{width:22px;height:22px;color:var(--gold-300);flex-shrink:0;margin-top:3px}
+.infolist svg{width:22px;height:22px;color:var(--gold-300);flex-shrink:0;margin-top:4px}
 .infolist b{display:block;font-size:.97rem;color:#fff}
-.infolist span{font-size:.88rem;color:#b6cee2}
+.infolist span.d{font-size:.88rem;color:#b6cee2}
 
 .card-form{background:#fff;border-radius:var(--radius-lg);padding:34px;box-shadow:var(--shadow-lg);color:var(--ink)}
 .card-form h3{font-size:1.32rem;color:var(--navy-800);margin-bottom:6px}
@@ -312,7 +305,7 @@ nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy
 .field label .req{color:var(--red-500)}
 .field input,.field select,.field textarea{
   font-family:inherit;font-size:.96rem;padding:12px 14px;border:1px solid var(--line);
-  border-radius:10px;background:#fbfdff;color:var(--ink);transition:border-color .18s,box-shadow .18s;width:100%;
+  border-radius:10px;background:#fbfdff;color:var(--ink);width:100%;transition:border-color .18s,box-shadow .18s;
 }
 .field textarea{resize:vertical;min-height:92px}
 .field input:focus,.field select:focus,.field textarea:focus{
@@ -323,19 +316,17 @@ nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy
 .field.is-invalid .err{display:block}
 .field small.help{font-size:.78rem;color:var(--ink-faint)}
 .checkrow{display:flex;gap:11px;align-items:flex-start;margin:6px 0 20px;font-size:.87rem;color:var(--ink-soft)}
-.checkrow input{width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--blue-500)}
+.checkrow input{width:18px;height:18px;margin-top:3px;flex-shrink:0;accent-color:var(--blue-500)}
+.checkrow .err{font-size:.79rem;color:var(--red-500);font-weight:600;display:none;margin-top:4px}
+.checkrow.is-invalid .err{display:block}
 .notice-safe{
   display:flex;gap:11px;background:#fdf6e3;border:1px solid #f0e0b6;border-radius:10px;
   padding:13px 15px;font-size:.83rem;color:#7a5a0d;margin-bottom:22px;
 }
-.notice-safe svg{width:19px;height:19px;flex-shrink:0;margin-top:2px}
-.form-ok{
-  display:none;text-align:center;padding:36px 14px;
-}
+.notice-safe svg{width:19px;height:19px;flex-shrink:0;margin-top:3px}
+.form-ok{display:none;text-align:center;padding:36px 14px}
 .form-ok.is-on{display:block}
-.form-ok__ico{
-  width:66px;height:66px;border-radius:50%;background:#eaf7f0;display:grid;place-items:center;margin:0 auto 18px;
-}
+.form-ok__ico{width:66px;height:66px;border-radius:50%;background:#eaf7f0;display:grid;place-items:center;margin:0 auto 18px}
 .form-ok__ico svg{width:32px;height:32px;color:var(--green-600)}
 .form-ok h3{color:var(--green-600)}
 .form-ok code{background:var(--bg-alt);padding:4px 10px;border-radius:6px;font-size:1rem;color:var(--navy-800);font-weight:700}
@@ -344,15 +335,9 @@ nav.main a:hover{background:var(--blue-50);text-decoration:none;color:var(--navy
 /* ============ FAQ ============ */
 .faq{max-width:840px;margin:0 auto}
 .qa{border:1px solid var(--line);border-radius:var(--radius);background:#fff;margin-bottom:12px;overflow:hidden}
-.qa summary{
-  cursor:pointer;padding:19px 54px 19px 22px;font-weight:600;color:var(--navy-800);
-  font-size:1rem;position:relative;list-style:none;
-}
+.qa summary{cursor:pointer;padding:19px 54px 19px 22px;font-weight:600;color:var(--navy-800);font-size:1rem;position:relative;list-style:none}
 .qa summary::-webkit-details-marker{display:none}
-.qa summary::after{
-  content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);
-  font-size:1.4rem;font-weight:400;color:var(--blue-500);line-height:1;
-}
+.qa summary::after{content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:1.4rem;font-weight:400;color:var(--blue-500);line-height:1}
 .qa[open] summary::after{content:"−"}
 .qa[open] summary{color:var(--blue-500)}
 .qa__body{padding:0 22px 20px;color:var(--ink-soft);font-size:.95rem}
@@ -419,288 +404,278 @@ footer.site a:hover{color:#fff}
 </head>
 <body>
 
-<!-- ============================ DEMO NOTICE ============================ -->
-<div class="demo-bar">
-  ⚠️ <b>TRANG DEMO / MẪU THIẾT KẾ</b> — không phải cổng thông tin chính thức. Số liệu, hình ảnh &amp; biểu mẫu là dữ liệu giả lập, không gửi đi đâu.
-</div>
+<div class="demo-bar" data-i18n-html="demo.bar"></div>
 
-<!-- ============================ TOP STRIP ============================ -->
 <div class="topstrip">
   <div class="wrap">
-    <span><span class="dot"></span> Hệ thống đang hoạt động bình thường — <b>uptime 99,99%</b></span>
-    <span>Tổng đài 24/7: <a href="tel:1900000000"><b>1900 0000</b></a> &nbsp;·&nbsp; <a href="#lienhe">Nộp phạt trực tuyến</a></span>
+    <span><span class="dot"></span> <span data-i18n="top.status"></span></span>
+    <span class="right-group">
+      <span><span data-i18n="top.hotline"></span> <a href="tel:+6620000000"><b>+66 2 000 0000</b></a></span>
+      <a href="#lienhe" data-i18n="top.pay"></a>
+      <span class="langsw" role="group" data-i18n-aria="lang.label">
+        <button type="button" data-setlang="th" aria-pressed="true">ไทย</button>
+        <button type="button" data-setlang="en" aria-pressed="false">EN</button>
+      </span>
+    </span>
   </div>
 </div>
 
-<!-- ============================ HEADER ============================ -->
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Trang chủ">
+    <a class="brand" href="#top" data-i18n-aria="nav.home">
       <span class="brand__seal" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#5d420a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 21h18M4 21V10m16 11V10M2 10l10-6 10 6M8 21v-7h3v7m5 0v-7h-3"/>
         </svg>
       </span>
       <span class="brand__txt">
-        <strong>Kho bạc Nhà nước</strong>
-        <span>Dịch vụ công trực tuyến</span>
+        <strong>Siam Treasury Portal</strong>
+        <span data-i18n="brand.sub"></span>
       </span>
     </a>
 
-    <button class="burger" id="burger" aria-label="Mở menu" aria-expanded="false" aria-controls="mainnav">
+    <button class="burger" id="burger" data-i18n-aria="nav.menu" aria-expanded="false" aria-controls="mainnav">
       <span></span><span></span><span></span>
     </button>
 
     <nav class="main" id="mainnav">
-      <a href="#uudiem">3 điểm nhất</a>
-      <a href="#video">Giới thiệu</a>
-      <a href="#quytrinh">Quy trình</a>
-      <a href="#danhgia">Đánh giá</a>
-      <a href="#faq">Hỏi đáp</a>
-      <a class="btn btn--primary nav-cta" href="#lienhe">Nộp phạt ngay</a>
+      <a href="#uudiem" data-i18n="nav.bests"></a>
+      <a href="#video" data-i18n="nav.video"></a>
+      <a href="#quytrinh" data-i18n="nav.process"></a>
+      <a href="#danhgia" data-i18n="nav.reviews"></a>
+      <a href="#faq" data-i18n="nav.faq"></a>
+      <a class="btn btn--primary nav-cta" href="#lienhe" data-i18n="nav.cta"></a>
     </nav>
   </div>
 </header>
 
-<!-- ============================ HERO ============================ -->
 <section class="hero" id="top">
-  <div class="hero__bg" aria-hidden="true">
-    <!-- PEXELS: ảnh nền hero — toà nhà công vụ / kiến trúc hành chính -->
+  <div class="hero__bg">
+    <!-- PEXELS: ảnh nền hero -->
     <img src="https://images.pexels.com/photos/2760243/pexels-photo-2760243.jpeg?auto=compress&cs=tinysrgb&w=1920"
-         alt="" loading="eager" fetchpriority="high"
+         data-i18n-alt="hero.img.alt" alt="" loading="eager" fetchpriority="high"
          onerror="this.closest('.hero__bg').style.background='linear-gradient(135deg,#071c34,#1b4d80)';this.remove();">
   </div>
   <div class="wrap">
     <div class="hero__inner">
-      <span class="hero__tag">🏆 <em>3 điểm “nhất”</em> của dịch vụ công Kho bạc Nhà nước</span>
-      <h1>Nghiệp vụ ngân sách <span class="hl">thông minh nhất</span>, hỗ trợ 24/7 và minh bạch từng bước.</h1>
-      <p class="hero__sub">
-        Một cổng duy nhất cho toàn bộ giao dịch với Kho bạc: nộp tiền vào ngân sách, nộp tiền phạt,
-        tra cứu chứng từ và theo dõi tiến độ xử lý theo thời gian thực — mọi lúc, mọi nơi, trên mọi thiết bị.
-      </p>
+      <span class="hero__tag" data-i18n="hero.tag"></span>
+      <h1><span data-i18n="hero.h1.pre"></span><span class="hl" data-i18n="hero.h1.hl"></span><span data-i18n="hero.h1.post"></span></h1>
+      <p class="hero__sub" data-i18n="hero.sub"></p>
       <div class="hero__actions">
         <a class="btn btn--primary btn--lg" href="#lienhe">
-          Nộp phạt trực tuyến
+          <span data-i18n="hero.cta1"></span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a class="btn btn--ghost btn--lg" href="#video">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Xem video giới thiệu
+          <span data-i18n="hero.cta2"></span>
         </a>
       </div>
       <div class="hero__badges">
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg> Ký số &amp; mã hoá đầu-cuối</div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Xử lý trung bình 42 giây</div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Liên thông 63 tỉnh, thành</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg> <span data-i18n="hero.b1"></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span data-i18n="hero.b2"></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="hero.b3"></span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ STATS ============================ -->
-<section class="stats" aria-label="Số liệu nổi bật">
+<section class="stats" data-i18n-aria="stats.aria">
   <div class="wrap">
     <div class="stats__grid">
-      <div class="stat"><div class="stat__num" data-count="99.99" data-dec="2" data-suffix="%" data-delay="0">0%</div><div class="stat__lbl">Tỷ lệ khả dụng hệ thống (uptime)</div></div>
-      <div class="stat"><div class="stat__num" data-count="42" data-suffix=" giây" data-delay="130">0</div><div class="stat__lbl">Thời gian xử lý giao dịch bình quân</div></div>
-      <div class="stat"><div class="stat__num" data-count="24" data-suffix="/7" data-delay="260">0</div><div class="stat__lbl">Hỗ trợ đa kênh, kể cả ngày lễ</div></div>
-      <div class="stat"><div class="stat__num" data-count="18.6" data-dec="1" data-suffix=" triệu" data-delay="390">0</div><div class="stat__lbl">Giao dịch xử lý trong năm 2025</div></div>
+      <div class="stat"><div class="stat__num" data-count="99.99" data-dec="2" data-suffix="%" data-delay="0">0</div><div class="stat__lbl" data-i18n="stats.1"></div></div>
+      <div class="stat"><div class="stat__num" data-count="42" data-suffix-key="suffix.sec" data-delay="130">0</div><div class="stat__lbl" data-i18n="stats.2"></div></div>
+      <div class="stat"><div class="stat__num" data-count="24" data-suffix="/7" data-delay="260">0</div><div class="stat__lbl" data-i18n="stats.3"></div></div>
+      <div class="stat"><div class="stat__num" data-count="18.6" data-dec="1" data-suffix-key="suffix.million" data-delay="390">0</div><div class="stat__lbl" data-i18n="stats.4"></div></div>
     </div>
   </div>
 </section>
 
-<!-- ============================ 3 PILLARS ============================ -->
 <section class="section" id="uudiem">
   <div class="wrap">
     <div class="section__head center reveal">
-      <span class="eyebrow">Ba cái “nhất”</span>
-      <h2 class="sec-title">Vì sao người dân và doanh nghiệp chọn dịch vụ công Kho bạc?</h2>
-      <p class="lede">Không phải ba lời hứa — là ba cam kết được đo lường bằng số liệu và công bố công khai hằng tháng.</p>
+      <span class="eyebrow" data-i18n="pillars.eyebrow"></span>
+      <h2 class="sec-title" data-i18n="pillars.title"></h2>
+      <p class="lede" data-i18n="pillars.lede"></p>
     </div>
 
     <div class="pillars">
-      <!-- 1 -->
       <article class="pillar reveal">
         <div class="pillar__media">
-          <!-- PEXELS: trung tâm dữ liệu / máy chủ -->
+          <!-- PEXELS: trung tâm dữ liệu -->
           <img src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800"
-               alt="Trung tâm dữ liệu vận hành hệ thống Kho bạc" loading="lazy"
-               onerror="this.style.display='none'">
-          <span class="pillar__rank">Nhất #1</span>
+               data-i18n-alt="p1.img.alt" alt="" loading="lazy" onerror="this.style.display='none'">
+          <span class="pillar__rank" data-i18n="p1.rank"></span>
         </div>
         <div class="pillar__body">
           <span class="pillar__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
           </span>
-          <h3>Hệ thống thông minh &amp; ổn định bậc nhất</h3>
-          <p>Kiến trúc phân tán, dự phòng nóng hai trung tâm dữ liệu, tự động chuyển đổi khi sự cố — người dùng không cảm nhận được gián đoạn.</p>
+          <h3 data-i18n="p1.h3"></h3>
+          <p data-i18n="p1.p"></p>
           <ul>
-            <li>Uptime 99,99% (đo bằng giám sát độc lập)</li>
-            <li>Tự động nhận dạng &amp; điền chứng từ bằng AI</li>
-            <li>Cảnh báo sai sót ngay khi nhập liệu</li>
-            <li>Chịu tải <span data-count="12000" data-sep="1">0</span> giao dịch/phút giờ cao điểm</li>
+            <li><span data-i18n="p1.li1"></span></li>
+            <li><span data-i18n="p1.li2"></span></li>
+            <li><span data-i18n="p1.li3"></span></li>
+            <li><span><span data-i18n="p1.li4a"></span><span data-count="12000" data-sep="1">0</span><span data-i18n="p1.li4b"></span></span></li>
           </ul>
-          <div class="pillar__foot">Sự cố gián đoạn 2025: <b>0 lần</b> ảnh hưởng toàn hệ thống</div>
+          <div class="pillar__foot" data-i18n="p1.foot"></div>
         </div>
       </article>
 
-      <!-- 2 -->
       <article class="pillar reveal">
         <div class="pillar__media">
-          <!-- PEXELS: nhân viên tổng đài / hỗ trợ khách hàng -->
+          <!-- PEXELS: nhân viên tổng đài -->
           <img src="https://images.pexels.com/photos/7709216/pexels-photo-7709216.jpeg?auto=compress&cs=tinysrgb&w=800"
-               alt="Nhân viên tổng đài hỗ trợ người dân qua điện thoại" loading="lazy"
-               onerror="this.style.display='none'">
-          <span class="pillar__rank">Nhất #2</span>
+               data-i18n-alt="p2.img.alt" alt="" loading="lazy" onerror="this.style.display='none'">
+          <span class="pillar__rank" data-i18n="p2.rank"></span>
         </div>
         <div class="pillar__body">
           <span class="pillar__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
           </span>
-          <h3>Hỗ trợ bậc nhất — 24 giờ, 7 ngày</h3>
-          <p>Đội ngũ nghiệp vụ trực xuyên đêm, xuyên lễ. Gọi, chat hay gửi yêu cầu — luôn có người thật trả lời, không để lại tin nhắn chờ hôm sau.</p>
+          <h3 data-i18n="p2.h3"></h3>
+          <p data-i18n="p2.p"></p>
           <ul>
-            <li>Trả lời cuộc gọi trong &lt; 20 giây</li>
-            <li>5 kênh: tổng đài, chat, Zalo, email, tại quầy</li>
-            <li>Chuyên viên nghiệp vụ trực tiếp, không qua tổng đài máy</li>
-            <li>Hướng dẫn từ xa qua chia sẻ màn hình</li>
+            <li><span data-i18n="p2.li1"></span></li>
+            <li><span data-i18n="p2.li2"></span></li>
+            <li><span data-i18n="p2.li3"></span></li>
+            <li><span data-i18n="p2.li4"></span></li>
           </ul>
-          <div class="pillar__foot">Mức độ hài lòng: <b data-count="98.4" data-dec="1" data-suffix="%">0%</b> trên <span data-count="214000" data-sep="1">0</span> phiếu đánh giá</div>
+          <div class="pillar__foot">
+            <span data-i18n="p2.foota"></span><b data-count="98.4" data-dec="1" data-suffix="%">0</b><span data-i18n="p2.footb"></span><b data-count="214000" data-sep="1">0</b><span data-i18n="p2.footc"></span>
+          </div>
         </div>
       </article>
 
-      <!-- 3 -->
       <article class="pillar reveal">
         <div class="pillar__media">
-          <!-- PEXELS: biểu đồ / phân tích minh bạch -->
+          <!-- PEXELS: bảng theo dõi tiến độ -->
           <img src="https://images.pexels.com/photos/7567434/pexels-photo-7567434.jpeg?auto=compress&cs=tinysrgb&w=800"
-               alt="Bảng theo dõi tiến độ xử lý hồ sơ minh bạch" loading="lazy"
-               onerror="this.style.display='none'">
-          <span class="pillar__rank">Nhất #3</span>
+               data-i18n-alt="p3.img.alt" alt="" loading="lazy" onerror="this.style.display='none'">
+          <span class="pillar__rank" data-i18n="p3.rank"></span>
         </div>
         <div class="pillar__body">
           <span class="pillar__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
           </span>
-          <h3>Minh bạch &amp; nhanh chóng nhất mọi quy trình</h3>
-          <p>Mỗi hồ sơ có một mã tra cứu duy nhất. Bạn thấy rõ hồ sơ đang ở bước nào, ai đang xử lý, còn bao lâu — không cần gọi hỏi.</p>
+          <h3 data-i18n="p3.h3"></h3>
+          <p data-i18n="p3.p"></p>
           <ul>
-            <li>Theo dõi trạng thái theo thời gian thực</li>
-            <li>Công khai thời hạn cam kết cho từng bước</li>
-            <li>Lịch sử thao tác không thể sửa xoá (audit log)</li>
-            <li>Biên nhận điện tử có ký số ngay sau khi nộp</li>
+            <li><span data-i18n="p3.li1"></span></li>
+            <li><span data-i18n="p3.li2"></span></li>
+            <li><span data-i18n="p3.li3"></span></li>
+            <li><span data-i18n="p3.li4"></span></li>
           </ul>
-          <div class="pillar__foot">Hồ sơ hoàn thành đúng/trước hạn: <b data-count="99.2" data-dec="1" data-suffix="%">0%</b></div>
+          <div class="pillar__foot"><span data-i18n="p3.foota"></span><b data-count="99.2" data-dec="1" data-suffix="%">0</b></div>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============================ VIDEO ============================ -->
 <section class="section section--alt" id="video">
   <div class="wrap">
     <div class="videoblock">
       <div class="reveal">
         <div class="player" id="player">
-          <!-- PEXELS: video minh hoạ (mock). Thay bằng video thật khi có. -->
+          <!-- PEXELS: video minh hoạ (mock) -->
           <video id="promoVideo" playsinline preload="metadata"
                  poster="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1280">
             <source src="https://videos.pexels.com/video-files/3252919/3252919-uhd_2560_1440_25fps.mp4" type="video/mp4">
             <source src="https://videos.pexels.com/video-files/3184291/3184291-uhd_2560_1440_25fps.mp4" type="video/mp4">
           </video>
-          <div class="player__overlay" id="playOverlay" role="button" tabindex="0" aria-label="Phát video giới thiệu">
+          <div class="player__overlay" id="playOverlay" role="button" tabindex="0" data-i18n-aria="video.play">
             <span class="player__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="player__caption">▶ Phim giới thiệu · 1:48 · phụ đề Việt</span>
+            <span class="player__caption" data-i18n="video.caption"></span>
           </div>
           <div class="player__fallback">
             <div>
-              <strong style="color:#fff;display:block;margin-bottom:6px">Video minh hoạ (mock)</strong>
-              Không tải được video từ CDN.<br>Hãy thay bằng đường dẫn video của bạn trong thẻ <code>&lt;source&gt;</code>.
+              <strong style="color:#fff;display:block;margin-bottom:6px" data-i18n="video.fb.title"></strong>
+              <span data-i18n="video.fb.body"></span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="reveal">
-        <span class="eyebrow">Xem trong 2 phút</span>
-        <h2 class="sec-title">Từ lúc mở trang đến khi có biên nhận điện tử</h2>
-        <p class="lede">Toàn bộ hành trình của một lần nộp tiền phạt trên cổng dịch vụ công — không giấy tờ, không xếp hàng, không phải đi lại.</p>
+        <span class="eyebrow" data-i18n="video.eyebrow"></span>
+        <h2 class="sec-title" data-i18n="video.title"></h2>
+        <p class="lede" data-i18n="video.lede"></p>
         <ul class="vlist">
-          <li><span class="t">00:12</span><span><strong>Đăng nhập một lần (SSO)</strong><span>Dùng VNeID hoặc tài khoản định danh điện tử, không cần khai lại thông tin.</span></span></li>
-          <li><span class="t">00:38</span><span><strong>Hệ thống tự điền chứng từ</strong><span>Chỉ cần số quyết định xử phạt — phần còn lại được truy xuất tự động.</span></span></li>
-          <li><span class="t">01:05</span><span><strong>Thanh toán &amp; đối soát tức thời</strong><span>Kết nối trực tiếp 42 ngân hàng và các ví điện tử được cấp phép.</span></span></li>
-          <li><span class="t">01:33</span><span><strong>Biên nhận ký số về ngay</strong><span>Gửi đồng thời qua email và tin nhắn, tra cứu lại bất cứ lúc nào.</span></span></li>
+          <li><span class="t">00:12</span><span><strong data-i18n="v1.t"></strong><span class="d" data-i18n="v1.d"></span></span></li>
+          <li><span class="t">00:38</span><span><strong data-i18n="v2.t"></strong><span class="d" data-i18n="v2.d"></span></span></li>
+          <li><span class="t">01:05</span><span><strong data-i18n="v3.t"></strong><span class="d" data-i18n="v3.d"></span></span></li>
+          <li><span class="t">01:33</span><span><strong data-i18n="v4.t"></strong><span class="d" data-i18n="v4.d"></span></span></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ FEATURE ROWS ============================ -->
 <section class="section">
   <div class="wrap">
 
     <div class="frow reveal">
       <div class="frow__media">
-        <!-- PEXELS: hạ tầng công nghệ / màn hình giám sát -->
+        <!-- PEXELS: màn hình giám sát -->
         <img src="https://images.pexels.com/photos/6779716/pexels-photo-6779716.jpeg?auto=compress&cs=tinysrgb&w=1000"
-             alt="Màn hình giám sát vận hành hệ thống" loading="lazy" onerror="this.style.visibility='hidden'">
-        <div class="frow__badge"><span class="k" data-count="99.99" data-dec="2" data-suffix="%">0%</span><span class="d">Khả dụng liên tục 12 tháng gần nhất</span></div>
+             data-i18n-alt="f1.img.alt" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+        <div class="frow__badge"><span class="k" data-count="99.99" data-dec="2" data-suffix="%">0</span><span class="d" data-i18n="f1.badge"></span></div>
       </div>
       <div>
-        <span class="eyebrow">Nhất #1 · Thông minh &amp; ổn định</span>
-        <h3>Ổn định là điều bạn không bao giờ phải nghĩ tới</h3>
-        <p>Hệ thống chạy song song tại hai trung tâm dữ liệu cách nhau hàng trăm km. Khi một điểm gặp sự cố, lưu lượng được chuyển sang điểm còn lại trong vài giây — giao dịch đang thực hiện không bị mất.</p>
-        <p>Lớp trí tuệ nhân tạo phía trên giúp phát hiện sai sót ngay khi bạn nhập: sai mã chương, sai tiểu mục, sai đơn vị thụ hưởng đều được cảnh báo trước khi gửi, thay vì bị trả lại sau vài ngày.</p>
+        <span class="eyebrow" data-i18n="f1.eyebrow"></span>
+        <h3 data-i18n="f1.h3"></h3>
+        <p data-i18n="f1.p1"></p>
+        <p data-i18n="f1.p2"></p>
         <div class="chips">
-          <span class="chip">Dự phòng nóng 2 DC</span>
-          <span class="chip">Tự động chuyển đổi &lt; 5 giây</span>
-          <span class="chip">Kiểm tra dữ liệu bằng AI</span>
-          <span class="chip">Sao lưu liên tục</span>
+          <span class="chip" data-i18n="f1.c1"></span>
+          <span class="chip" data-i18n="f1.c2"></span>
+          <span class="chip" data-i18n="f1.c3"></span>
+          <span class="chip" data-i18n="f1.c4"></span>
         </div>
       </div>
     </div>
 
     <div class="frow frow--flip reveal">
       <div class="frow__media">
-        <!-- PEXELS: tư vấn viên hỗ trợ -->
+        <!-- PEXELS: chuyên viên hỗ trợ -->
         <img src="https://images.pexels.com/photos/8867482/pexels-photo-8867482.jpeg?auto=compress&cs=tinysrgb&w=1000"
-             alt="Chuyên viên hỗ trợ người dân tại quầy giao dịch" loading="lazy" onerror="this.style.visibility='hidden'">
-        <div class="frow__badge"><span class="k" data-count="20" data-prefix="&lt; " data-suffix="s">&lt; 0s</span><span class="d">Thời gian chờ trung bình khi gọi tổng đài</span></div>
+             data-i18n-alt="f2.img.alt" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+        <div class="frow__badge"><span class="k" data-count="20" data-prefix="&lt; " data-suffix-key="suffix.secShort">0</span><span class="d" data-i18n="f2.badge"></span></div>
       </div>
       <div>
-        <span class="eyebrow">Nhất #2 · Hỗ trợ 24/7</span>
-        <h3>Nửa đêm, ngày lễ, hay 30 Tết — vẫn có người trả lời</h3>
-        <p>Ba ca trực liên tục với chuyên viên nghiệp vụ thật, không phải chỉ tổng đài tự động. Bạn được hướng dẫn đến khi hoàn tất, và có thể yêu cầu chia sẻ màn hình nếu cần thao tác cùng.</p>
-        <p>Mỗi yêu cầu hỗ trợ đều có mã phiếu và thời hạn xử lý cam kết. Nếu quá hạn, phiếu tự động được nâng cấp lên cấp quản lý — không có yêu cầu nào bị bỏ quên.</p>
+        <span class="eyebrow" data-i18n="f2.eyebrow"></span>
+        <h3 data-i18n="f2.h3"></h3>
+        <p data-i18n="f2.p1"></p>
+        <p data-i18n="f2.p2"></p>
         <div class="chips">
-          <span class="chip chip--gold">Tổng đài 1900 0000</span>
-          <span class="chip chip--gold">Chat trực tuyến</span>
-          <span class="chip chip--gold">Zalo OA</span>
-          <span class="chip chip--gold">Email &lt; 2 giờ</span>
-          <span class="chip chip--gold">Hỗ trợ từ xa</span>
+          <span class="chip chip--gold" data-i18n="f2.c1"></span>
+          <span class="chip chip--gold" data-i18n="f2.c2"></span>
+          <span class="chip chip--gold" data-i18n="f2.c3"></span>
+          <span class="chip chip--gold" data-i18n="f2.c4"></span>
+          <span class="chip chip--gold" data-i18n="f2.c5"></span>
         </div>
       </div>
     </div>
 
     <div class="frow reveal">
       <div class="frow__media">
-        <!-- PEXELS: hồ sơ, giấy tờ, minh bạch -->
+        <!-- PEXELS: tra cứu trên điện thoại -->
         <img src="https://images.pexels.com/photos/5849577/pexels-photo-5849577.jpeg?auto=compress&cs=tinysrgb&w=1000"
-             alt="Tra cứu tiến độ hồ sơ trên thiết bị di động" loading="lazy" onerror="this.style.visibility='hidden'">
-        <div class="frow__badge"><span class="k" data-count="42" data-suffix=" giây">0 giây</span><span class="d">Bình quân từ lúc nộp đến khi có biên nhận</span></div>
+             data-i18n-alt="f3.img.alt" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+        <div class="frow__badge"><span class="k" data-count="42" data-suffix-key="suffix.sec">0</span><span class="d" data-i18n="f3.badge"></span></div>
       </div>
       <div>
-        <span class="eyebrow">Nhất #3 · Minh bạch &amp; nhanh chóng</span>
-        <h3>Bạn luôn biết hồ sơ của mình đang ở đâu</h3>
-        <p>Mỗi hồ sơ có một mã tra cứu duy nhất và một dòng thời gian công khai: đã nhận lúc nào, ai đang xử lý, bước tiếp theo là gì, hạn cuối là khi nào. Không cần gọi hỏi, không cần “nhờ người quen”.</p>
-        <p>Toàn bộ thao tác được ghi vào sổ nhật ký không thể sửa xoá. Bạn có thể tải bản sao nhật ký hồ sơ của mình bất cứ lúc nào để đối chiếu.</p>
+        <span class="eyebrow" data-i18n="f3.eyebrow"></span>
+        <h3 data-i18n="f3.h3"></h3>
+        <p data-i18n="f3.p1"></p>
+        <p data-i18n="f3.p2"></p>
         <div class="chips">
-          <span class="chip chip--green">Mã tra cứu duy nhất</span>
-          <span class="chip chip--green">Dòng thời gian công khai</span>
-          <span class="chip chip--green">Nhật ký bất biến</span>
-          <span class="chip chip--green">Biên nhận ký số</span>
+          <span class="chip chip--green" data-i18n="f3.c1"></span>
+          <span class="chip chip--green" data-i18n="f3.c2"></span>
+          <span class="chip chip--green" data-i18n="f3.c3"></span>
+          <span class="chip chip--green" data-i18n="f3.c4"></span>
         </div>
       </div>
     </div>
@@ -708,194 +683,189 @@ footer.site a:hover{color:#fff}
   </div>
 </section>
 
-<!-- ============================ PROCESS ============================ -->
 <section class="section section--alt" id="quytrinh">
   <div class="wrap">
     <div class="section__head center reveal">
-      <span class="eyebrow">Quy trình nộp phạt</span>
-      <h2 class="sec-title">Bốn bước, không giấy tờ, không đi lại</h2>
-      <p class="lede">Thời hạn cam kết được công bố cho từng bước. Bạn nhận thông báo ở mỗi lần chuyển bước.</p>
+      <span class="eyebrow" data-i18n="proc.eyebrow"></span>
+      <h2 class="sec-title" data-i18n="proc.title"></h2>
+      <p class="lede" data-i18n="proc.lede"></p>
     </div>
     <div class="steps">
-      <div class="step reveal"><h4>Khai thông tin</h4><p>Nhập số quyết định xử phạt và thông tin liên hệ. Hệ thống tự truy xuất phần còn lại.</p><span class="step__time">≈ 2 phút</span></div>
-      <div class="step reveal"><h4>Đối chiếu tự động</h4><p>Hệ thống kiểm tra chéo với cơ quan ra quyết định và xác nhận số tiền phải nộp.</p><span class="step__time">tức thời</span></div>
-      <div class="step reveal"><h4>Thanh toán</h4><p>Chọn ngân hàng hoặc ví điện tử đã liên kết, xác thực bằng ứng dụng của ngân hàng.</p><span class="step__time">≈ 1 phút</span></div>
-      <div class="step reveal"><h4>Nhận biên nhận</h4><p>Biên nhận điện tử có ký số được gửi qua email &amp; SMS, tra cứu lại bằng mã hồ sơ.</p><span class="step__time">&lt; 60 giây</span></div>
+      <div class="step reveal"><h4 data-i18n="s1.h"></h4><p data-i18n="s1.p"></p><span class="step__time" data-i18n="s1.t"></span></div>
+      <div class="step reveal"><h4 data-i18n="s2.h"></h4><p data-i18n="s2.p"></p><span class="step__time" data-i18n="s2.t"></span></div>
+      <div class="step reveal"><h4 data-i18n="s3.h"></h4><p data-i18n="s3.p"></p><span class="step__time" data-i18n="s3.t"></span></div>
+      <div class="step reveal"><h4 data-i18n="s4.h"></h4><p data-i18n="s4.p"></p><span class="step__time" data-i18n="s4.t"></span></div>
     </div>
   </div>
 </section>
 
-<!-- ============================ TESTIMONIALS ============================ -->
 <section class="section" id="danhgia">
   <div class="wrap">
     <div class="section__head center reveal">
-      <span class="eyebrow">Người dùng nói gì</span>
-      <h2 class="sec-title"><span data-count="214000" data-sep="1">0</span> phiếu đánh giá, <span data-count="98.4" data-dec="1" data-suffix="%" data-delay="180">0%</span> hài lòng</h2>
-      <p class="lede">Trích từ khảo sát sau giao dịch (nội dung minh hoạ cho bản demo).</p>
+      <span class="eyebrow" data-i18n="quotes.eyebrow"></span>
+      <h2 class="sec-title"><span data-i18n="quotes.pre"></span><span data-count="214000" data-sep="1">0</span><span data-i18n="quotes.mid"></span><span data-count="98.4" data-dec="1" data-suffix="%" data-delay="180">0</span><span data-i18n="quotes.post"></span></h2>
+      <p class="lede" data-i18n="quotes.lede"></p>
     </div>
     <div class="quotes">
       <div class="quote reveal">
         <div class="quote__stars">★★★★★</div>
-        <p>“Tôi nộp phạt lúc 11 giờ đêm và vẫn có người trả lời chat khi tôi nhập sai số quyết định. Mười phút sau là xong, biên nhận về email luôn.”</p>
+        <p data-i18n="q1.text"></p>
         <div class="quote__who">
           <!-- PEXELS: chân dung -->
           <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=120" alt="" loading="lazy" onerror="this.style.display='none'">
-          <span><b>Nguyễn Thanh Hà</b><span>Người dân — Hà Nội</span></span>
+          <span><b>Pimchanok Wongsawat</b><span data-i18n="q1.role"></span></span>
         </div>
       </div>
       <div class="quote reveal">
         <div class="quote__stars">★★★★★</div>
-        <p>“Kế toán công ty tôi nộp hàng trăm chứng từ mỗi tháng. Hai năm nay chưa lần nào hệ thống sập vào kỳ quyết toán — đó là điều tôi quý nhất.”</p>
+        <p data-i18n="q2.text"></p>
         <div class="quote__who">
           <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=120" alt="" loading="lazy" onerror="this.style.display='none'">
-          <span><b>Trần Quốc Bảo</b><span>Kế toán trưởng — TP. Hồ Chí Minh</span></span>
+          <span><b>Somchai Ratanakul</b><span data-i18n="q2.role"></span></span>
         </div>
       </div>
       <div class="quote reveal">
         <div class="quote__stars">★★★★★</div>
-        <p>“Điều tôi thích là biết rõ hồ sơ đang ở bước nào và còn bao lâu. Không phải đoán, không phải gọi hỏi ai cả.”</p>
+        <p data-i18n="q3.text"></p>
         <div class="quote__who">
           <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=120" alt="" loading="lazy" onerror="this.style.display='none'">
-          <span><b>Lê Minh Phương</b><span>Chủ hộ kinh doanh — Đà Nẵng</span></span>
+          <span><b>Anan Thavornsiri</b><span data-i18n="q3.role"></span></span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ FORM ============================ -->
 <section class="section formsec" id="lienhe">
   <div class="wrap">
     <div class="formgrid">
       <div class="reveal">
-        <span class="eyebrow" style="color:var(--gold-300)">Nộp phạt trực tuyến</span>
-        <h2>Gửi thông tin — chuyên viên liên hệ lại trong vòng 30 phút</h2>
-        <p class="lede">Điền phiếu bên cạnh để đăng ký nộp tiền phạt hành chính. Bạn sẽ nhận mã hồ sơ ngay sau khi gửi và dùng mã đó để tra cứu tiến độ.</p>
+        <span class="eyebrow" style="color:var(--gold-300)" data-i18n="form.eyebrow"></span>
+        <h2 data-i18n="form.h2"></h2>
+        <p class="lede" data-i18n="form.lede"></p>
         <ul class="infolist">
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-            <span><b>Tổng đài 24/7: 1900 0000</b><span>Nhánh 2 — Nghiệp vụ thu ngân sách &amp; tiền phạt</span></span>
+            <span><b data-i18n="info1.b"></b><span class="d" data-i18n="info1.s"></span></span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-            <span><b>dichvucong@demo.example</b><span>Phản hồi trong 2 giờ làm việc</span></span>
+            <span><b data-i18n="info2.b"></b><span class="d" data-i18n="info2.s"></span></span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            <span><b>Tiếp nhận trực tuyến 24/7</b><span>Hồ sơ gửi ngoài giờ vẫn được ghi nhận theo mốc thời gian thực tế</span></span>
+            <span><b data-i18n="info3.b"></b><span class="d" data-i18n="info3.s"></span></span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
-            <span><b>Bảo mật thông tin</b><span>Dữ liệu mã hoá khi truyền và khi lưu, chỉ dùng cho mục đích xử lý hồ sơ</span></span>
+            <span><b data-i18n="info4.b"></b><span class="d" data-i18n="info4.s"></span></span>
           </li>
         </ul>
       </div>
 
       <div class="card-form reveal">
         <div id="formShell">
-          <h3>Phiếu đăng ký nộp tiền phạt</h3>
-          <p class="hint">Các trường có dấu <span style="color:var(--red-500)">*</span> là bắt buộc.</p>
+          <h3 data-i18n="form.h3"></h3>
+          <p class="hint" data-i18n="form.hint"></p>
 
           <div class="notice-safe">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="M12 8v4M12 16h.01"/></svg>
-            <span><b>Không bao giờ nhập số thẻ, mật khẩu hay mã OTP tại đây.</b> Việc thanh toán chỉ thực hiện trên ứng dụng/cổng của ngân hàng sau khi hồ sơ được xác nhận.</span>
+            <span data-i18n-html="form.safe"></span>
           </div>
 
           <form id="fineForm" novalidate>
             <div class="fgrid">
               <div class="field field--full" data-field>
-                <label for="fullname">Họ và tên người nộp <span class="req">*</span></label>
-                <input type="text" id="fullname" name="fullname" autocomplete="name" placeholder="Nguyễn Văn A" required>
-                <span class="err">Vui lòng nhập họ và tên.</span>
+                <label for="fullname"><span data-i18n="fld.name"></span> <span class="req">*</span></label>
+                <input type="text" id="fullname" name="fullname" autocomplete="name" data-i18n-ph="fld.name.ph" required>
+                <span class="err" data-i18n="fld.name.err"></span>
               </div>
 
               <div class="field" data-field>
-                <label for="idnum">Số CCCD / Mã số thuế <span class="req">*</span></label>
-                <input type="text" id="idnum" name="idnum" inputmode="numeric" placeholder="012345678901" required
-                       pattern="[0-9]{9,14}">
-                <span class="err">Nhập 9–14 chữ số, không có dấu cách.</span>
+                <label for="idnum"><span data-i18n="fld.id"></span> <span class="req">*</span></label>
+                <input type="text" id="idnum" name="idnum" inputmode="numeric" data-i18n-ph="fld.id.ph" required>
+                <span class="err" data-i18n="fld.id.err"></span>
               </div>
 
               <div class="field" data-field>
-                <label for="phone">Số điện thoại <span class="req">*</span></label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="09xx xxx xxx" required
-                       pattern="(0|\+84)[0-9\s\.\-]{8,14}">
-                <span class="err">Số điện thoại chưa đúng định dạng.</span>
+                <label for="phone"><span data-i18n="fld.phone"></span> <span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" data-i18n-ph="fld.phone.ph" required
+                       pattern="(0|\+66)[0-9\s\.\-]{8,14}">
+                <span class="err" data-i18n="fld.phone.err"></span>
               </div>
 
               <div class="field field--full" data-field>
-                <label for="email">Email nhận biên nhận điện tử <span class="req">*</span></label>
-                <input type="email" id="email" name="email" autocomplete="email" placeholder="ban@example.com" required>
-                <span class="err">Email chưa đúng định dạng.</span>
+                <label for="email"><span data-i18n="fld.email"></span> <span class="req">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" data-i18n-ph="fld.email.ph" required>
+                <span class="err" data-i18n="fld.email.err"></span>
               </div>
 
               <div class="field" data-field>
-                <label for="decision">Số quyết định xử phạt <span class="req">*</span></label>
-                <input type="text" id="decision" name="decision" placeholder="VD: 1234/QĐ-XPHC" required>
-                <span class="err">Vui lòng nhập số quyết định xử phạt.</span>
+                <label for="decision"><span data-i18n="fld.order"></span> <span class="req">*</span></label>
+                <input type="text" id="decision" name="decision" data-i18n-ph="fld.order.ph" required>
+                <span class="err" data-i18n="fld.order.err"></span>
               </div>
 
               <div class="field" data-field>
-                <label for="issuedate">Ngày ra quyết định</label>
+                <label for="issuedate" data-i18n="fld.date"></label>
                 <input type="date" id="issuedate" name="issuedate">
-                <span class="err">Ngày không hợp lệ.</span>
+                <span class="err" data-i18n="fld.date.err"></span>
               </div>
 
               <div class="field" data-field>
-                <label for="agency">Cơ quan ra quyết định <span class="req">*</span></label>
+                <label for="agency"><span data-i18n="fld.agency"></span> <span class="req">*</span></label>
                 <select id="agency" name="agency" required>
-                  <option value="">— Chọn cơ quan —</option>
-                  <option>Cảnh sát giao thông</option>
-                  <option>Công an cấp xã / phường</option>
-                  <option>Thanh tra chuyên ngành</option>
-                  <option>Cơ quan thuế</option>
-                  <option>Cơ quan hải quan</option>
-                  <option>Quản lý thị trường</option>
-                  <option>Khác</option>
+                  <option value="" data-i18n="ag.0"></option>
+                  <option value="traffic-police" data-i18n="ag.traffic"></option>
+                  <option value="local-police" data-i18n="ag.police"></option>
+                  <option value="inspectorate" data-i18n="ag.inspect"></option>
+                  <option value="revenue" data-i18n="ag.revenue"></option>
+                  <option value="customs" data-i18n="ag.customs"></option>
+                  <option value="internal-trade" data-i18n="ag.trade"></option>
+                  <option value="immigration" data-i18n="ag.immigration"></option>
+                  <option value="other" data-i18n="ag.other"></option>
                 </select>
-                <span class="err">Vui lòng chọn cơ quan ra quyết định.</span>
+                <span class="err" data-i18n="fld.agency.err"></span>
               </div>
 
               <div class="field" data-field>
-                <label for="province">Tỉnh / thành phố nộp <span class="req">*</span></label>
+                <label for="province"><span data-i18n="fld.prov"></span> <span class="req">*</span></label>
                 <select id="province" name="province" required>
-                  <option value="">— Chọn địa bàn —</option>
-                  <option>Hà Nội</option>
-                  <option>TP. Hồ Chí Minh</option>
-                  <option>Hải Phòng</option>
-                  <option>Đà Nẵng</option>
-                  <option>Cần Thơ</option>
-                  <option>Tỉnh / thành khác</option>
+                  <option value="" data-i18n="pv.0"></option>
+                  <option value="bangkok" data-i18n="pv.bkk"></option>
+                  <option value="chiang-mai" data-i18n="pv.cnx"></option>
+                  <option value="chon-buri" data-i18n="pv.cbi"></option>
+                  <option value="phuket" data-i18n="pv.hkt"></option>
+                  <option value="khon-kaen" data-i18n="pv.kkn"></option>
+                  <option value="nakhon-ratchasima" data-i18n="pv.nma"></option>
+                  <option value="other" data-i18n="pv.other"></option>
                 </select>
-                <span class="err">Vui lòng chọn địa bàn nộp.</span>
+                <span class="err" data-i18n="fld.prov.err"></span>
               </div>
 
               <div class="field field--full" data-field>
-                <label for="amount">Số tiền phạt theo quyết định (VNĐ) <span class="req">*</span></label>
-                <input type="text" id="amount" name="amount" inputmode="numeric" placeholder="VD: 2.500.000" required>
-                <small class="help">Nhập theo đúng số tiền ghi trên quyết định. Hệ thống sẽ đối chiếu lại tự động.</small>
-                <span class="err">Vui lòng nhập số tiền hợp lệ.</span>
+                <label for="amount"><span data-i18n="fld.amount"></span> <span class="req">*</span></label>
+                <input type="text" id="amount" name="amount" inputmode="numeric" data-i18n-ph="fld.amount.ph" required>
+                <small class="help" data-i18n="fld.amount.help"></small>
+                <span class="err" data-i18n="fld.amount.err"></span>
               </div>
 
               <div class="field field--full" data-field>
-                <label for="note">Nội dung cần hỗ trợ</label>
-                <textarea id="note" name="note" placeholder="VD: Tôi muốn nộp thay cho người thân, cần hướng dẫn giấy tờ uỷ quyền…"></textarea>
-                <span class="err"></span>
+                <label for="note" data-i18n="fld.note"></label>
+                <textarea id="note" name="note" data-i18n-ph="fld.note.ph"></textarea>
               </div>
             </div>
 
             <label class="checkrow" data-field>
               <input type="checkbox" id="agree" name="agree" required>
-              <span>Tôi xác nhận thông tin trên là đúng và đồng ý để cơ quan Kho bạc sử dụng thông tin này nhằm xử lý hồ sơ nộp tiền phạt. <span class="req" style="color:var(--red-500)">*</span>
-              <span class="err" style="margin-top:4px">Bạn cần đồng ý trước khi gửi phiếu.</span></span>
+              <span>
+                <span data-i18n="form.agree"></span> <span class="req" style="color:var(--red-500)">*</span>
+                <span class="err" data-i18n="form.agree.err"></span>
+              </span>
             </label>
 
-            <button type="submit" class="btn btn--primary btn--lg btn--block" id="submitBtn">
-              Gửi phiếu &amp; nhận mã hồ sơ
-            </button>
-            <p style="font-size:.78rem;color:var(--ink-faint);text-align:center;margin:14px 0 0">
-              Đây là biểu mẫu demo — dữ liệu chỉ được xử lý trong trình duyệt của bạn và không được gửi tới bất kỳ máy chủ nào.
-            </p>
+            <button type="submit" class="btn btn--primary btn--lg btn--block" id="submitBtn" data-i18n="form.submit"></button>
+            <p style="font-size:.78rem;color:var(--ink-faint);text-align:center;margin:14px 0 0" data-i18n="form.disclaimer"></p>
           </form>
         </div>
 
@@ -903,67 +873,46 @@ footer.site a:hover{color:#fff}
           <div class="form-ok__ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
           </div>
-          <h3>Đã tiếp nhận phiếu của bạn</h3>
-          <p>Mã hồ sơ tra cứu của bạn là <code id="caseCode">KB-000000</code>.<br>Chuyên viên sẽ liên hệ trong vòng 30 phút, kể cả ngoài giờ hành chính.</p>
-          <p style="font-size:.82rem;color:var(--ink-faint)">(Bản demo — không có dữ liệu nào được gửi đi.)</p>
-          <button class="btn btn--outline" id="againBtn" type="button">Gửi phiếu khác</button>
+          <h3 data-i18n="form.ok.h3"></h3>
+          <p><span data-i18n="form.ok.p1"></span><code id="caseCode">STP-000000</code><span data-i18n="form.ok.p2"></span></p>
+          <p style="font-size:.82rem;color:var(--ink-faint)" data-i18n="form.ok.note"></p>
+          <button class="btn btn--outline" id="againBtn" type="button" data-i18n="form.ok.again"></button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ FAQ ============================ -->
 <section class="section" id="faq">
   <div class="wrap">
     <div class="section__head center reveal">
-      <span class="eyebrow">Hỏi đáp</span>
-      <h2 class="sec-title">Những câu được hỏi nhiều nhất</h2>
+      <span class="eyebrow" data-i18n="faq.eyebrow"></span>
+      <h2 class="sec-title" data-i18n="faq.title"></h2>
     </div>
     <div class="faq">
-      <details class="qa reveal" open>
-        <summary>Nộp phạt trực tuyến có giá trị pháp lý như nộp tại quầy không?</summary>
-        <div class="qa__body">Có. Biên nhận điện tử được ký số bởi cơ quan Kho bạc và có giá trị như biên lai giấy. Bạn có thể tải bản PDF hoặc tra cứu lại bằng mã hồ sơ bất cứ lúc nào.</div>
-      </details>
-      <details class="qa reveal">
-        <summary>Tôi nộp ngoài giờ hành chính thì hồ sơ được tính vào ngày nào?</summary>
-        <div class="qa__body">Hồ sơ được ghi nhận theo mốc thời gian thực tế bạn gửi, kể cả 2 giờ sáng hay ngày lễ. Nhật ký hệ thống lưu chính xác thời điểm này và không thể chỉnh sửa.</div>
-      </details>
-      <details class="qa reveal">
-        <summary>Nếu tôi nhập sai số quyết định xử phạt thì sao?</summary>
-        <div class="qa__body">Hệ thống đối chiếu tự động với cơ quan ra quyết định và cảnh báo ngay khi phát hiện không khớp — trước khi bạn thanh toán. Bạn có thể sửa lại hoặc gọi tổng đài để được hỗ trợ.</div>
-      </details>
-      <details class="qa reveal">
-        <summary>Tôi có thể nộp thay cho người khác không?</summary>
-        <div class="qa__body">Được. Bạn khai thông tin người bị xử phạt theo quyết định và ghi rõ ở phần “Nội dung cần hỗ trợ”. Chuyên viên sẽ hướng dẫn thủ tục uỷ quyền nếu cần.</div>
-      </details>
-      <details class="qa reveal">
-        <summary>Thông tin cá nhân của tôi được dùng như thế nào?</summary>
-        <div class="qa__body">Chỉ dùng cho mục đích xử lý hồ sơ, được mã hoá khi truyền và khi lưu trữ. Mọi lượt truy cập dữ liệu đều được ghi nhật ký. Bạn có quyền yêu cầu bản sao nhật ký hồ sơ của mình.</div>
-      </details>
-      <details class="qa reveal">
-        <summary>Có mất phí khi nộp qua cổng dịch vụ công không?</summary>
-        <div class="qa__body">Cổng dịch vụ công không thu phí. Ngân hàng hoặc ví điện tử có thể áp dụng phí chuyển tiền theo chính sách riêng — mức phí luôn được hiển thị trước khi bạn xác nhận thanh toán.</div>
-      </details>
+      <details class="qa reveal" open><summary data-i18n="faq.q1"></summary><div class="qa__body" data-i18n="faq.a1"></div></details>
+      <details class="qa reveal"><summary data-i18n="faq.q2"></summary><div class="qa__body" data-i18n="faq.a2"></div></details>
+      <details class="qa reveal"><summary data-i18n="faq.q3"></summary><div class="qa__body" data-i18n="faq.a3"></div></details>
+      <details class="qa reveal"><summary data-i18n="faq.q4"></summary><div class="qa__body" data-i18n="faq.a4"></div></details>
+      <details class="qa reveal"><summary data-i18n="faq.q5"></summary><div class="qa__body" data-i18n="faq.a5"></div></details>
+      <details class="qa reveal"><summary data-i18n="faq.q6"></summary><div class="qa__body" data-i18n="faq.a6"></div></details>
     </div>
   </div>
 </section>
 
-<!-- ============================ CTA BAND ============================ -->
 <section class="band">
   <div class="wrap">
     <div>
-      <h3>Còn thắc mắc? Gọi ngay, bất kể mấy giờ.</h3>
-      <p>Tổng đài 1900 0000 — chuyên viên nghiệp vụ trực 24/7, kể cả ngày lễ và Tết.</p>
+      <h3 data-i18n="band.h3"></h3>
+      <p data-i18n="band.p"></p>
     </div>
     <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <a class="btn btn--primary btn--lg" href="tel:1900000000">Gọi 1900 0000</a>
-      <a class="btn btn--outline btn--lg" href="#lienhe">Gửi phiếu nộp phạt</a>
+      <a class="btn btn--primary btn--lg" href="tel:+6620000000" data-i18n="band.cta1"></a>
+      <a class="btn btn--outline btn--lg" href="#lienhe" data-i18n="band.cta2"></a>
     </div>
   </div>
 </section>
 
-<!-- ============================ FOOTER ============================ -->
 <footer class="site">
   <div class="wrap">
     <div class="fgridw">
@@ -972,121 +921,148 @@ footer.site a:hover{color:#fff}
           <span class="brand__seal" aria-hidden="true" style="width:42px;height:42px">
             <svg viewBox="0 0 24 24" fill="none" stroke="#5d420a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V10m16 11V10M2 10l10-6 10 6M8 21v-7h3v7m5 0v-7h-3"/></svg>
           </span>
-          <span><strong>Kho bạc Nhà nước</strong><span>Dịch vụ công trực tuyến</span></span>
+          <span><strong>Siam Treasury Portal</strong><span data-i18n="brand.sub"></span></span>
         </div>
-        <p style="max-width:330px">Trang demo phục vụ trình bày ý tưởng thiết kế. Mọi nội dung, số liệu và hình ảnh trong trang là dữ liệu giả lập.</p>
+        <p style="max-width:340px" data-i18n="foot.about"></p>
       </div>
       <div>
-        <h4>Dịch vụ</h4>
+        <h4 data-i18n="foot.svc"></h4>
         <ul>
-          <li><a href="#lienhe">Nộp tiền phạt</a></li>
-          <li><a href="#quytrinh">Nộp ngân sách nhà nước</a></li>
-          <li><a href="#quytrinh">Tra cứu chứng từ</a></li>
-          <li><a href="#faq">Đối chiếu số dư</a></li>
+          <li><a href="#lienhe" data-i18n="foot.svc1"></a></li>
+          <li><a href="#quytrinh" data-i18n="foot.svc2"></a></li>
+          <li><a href="#quytrinh" data-i18n="foot.svc3"></a></li>
+          <li><a href="#faq" data-i18n="foot.svc4"></a></li>
         </ul>
       </div>
       <div>
-        <h4>Hỗ trợ</h4>
+        <h4 data-i18n="foot.sup"></h4>
         <ul>
-          <li><a href="#faq">Câu hỏi thường gặp</a></li>
-          <li><a href="tel:1900000000">Tổng đài 24/7</a></li>
-          <li><a href="#video">Hướng dẫn bằng video</a></li>
-          <li><a href="#danhgia">Đánh giá chất lượng</a></li>
+          <li><a href="#faq" data-i18n="foot.sup1"></a></li>
+          <li><a href="tel:+6620000000" data-i18n="foot.sup2"></a></li>
+          <li><a href="#video" data-i18n="foot.sup3"></a></li>
+          <li><a href="#danhgia" data-i18n="foot.sup4"></a></li>
         </ul>
       </div>
       <div>
-        <h4>Liên hệ</h4>
+        <h4 data-i18n="foot.con"></h4>
         <ul>
-          <li>Tổng đài: <a href="tel:1900000000">1900 0000</a></li>
-          <li>Email: dichvucong@demo.example</li>
-          <li>Địa chỉ: (nội dung minh hoạ)</li>
-          <li>Trực tuyến 24 giờ / 7 ngày</li>
+          <li><span data-i18n="foot.con1"></span> <a href="tel:+6620000000">+66 2 000 0000</a></li>
+          <li data-i18n="foot.con2"></li>
+          <li data-i18n="foot.con3"></li>
+          <li data-i18n="foot.con4"></li>
         </ul>
       </div>
     </div>
     <div class="fbot">
-      <span>© 2026 · Bản demo thiết kế — không phải cổng thông tin chính thức.</span>
-      <span>Ảnh &amp; video minh hoạ: <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a> (giấy phép miễn phí)</span>
+      <span data-i18n="foot.copy"></span>
+      <span><span data-i18n="foot.credit"></span> — <a href="https://www.pexels.com" target="_blank" rel="noopener">pexels.com</a></span>
     </div>
   </div>
 </footer>
 
+<script src="i18n.js"></script>
 <script>
 (function(){
   'use strict';
 
-  /* ---------- mobile nav ---------- */
-  var burger = document.getElementById('burger');
-  var nav = document.getElementById('mainnav');
-  burger.addEventListener('click', function(){
-    var open = nav.classList.toggle('is-open');
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  nav.addEventListener('click', function(e){
-    if (e.target.tagName === 'A') { nav.classList.remove('is-open'); burger.setAttribute('aria-expanded','false'); }
-  });
+  var DEFAULT_LANG = 'th';                 // đổi thành 'en' nếu muốn mặc định tiếng Anh
+  var LANGS = ['th','en'];
+  var STORE_KEY = 'stp-lang';
 
-  /* ---------- reveal on scroll ---------- */
-  var items = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en, i){
-        if (en.isIntersecting) {
-          en.target.style.transitionDelay = Math.min(i * 70, 280) + 'ms';
-          en.target.classList.add('is-in');
-          io.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-    items.forEach(function(el){ io.observe(el); });
-  } else {
-    items.forEach(function(el){ el.classList.add('is-in'); });
+  /* ================= I18N ================= */
+  var dictAll = window.I18N || {};
+  var lang = DEFAULT_LANG;
+  try {
+    var saved = localStorage.getItem(STORE_KEY);
+    if (saved && LANGS.indexOf(saved) > -1) lang = saved;
+  } catch (e) {}
+
+  function t(key){
+    var d = dictAll[lang] || {};
+    if (d[key] != null) return d[key];
+    var f = dictAll[DEFAULT_LANG] || {};
+    return f[key] != null ? f[key] : '';   // thiếu khoá -> rỗng, không hiện tên khoá
   }
 
-  /* ---------- animated counters ----------
-     Dùng cho mọi phần tử có [data-count]. Các thuộc tính hỗ trợ:
-       data-count  : giá trị đích (bắt buộc)          vd: 99.99
-       data-dec    : số chữ số thập phân (mặc định 0) vd: 2  -> "99,99"
-       data-sep    : "1" = tách nghìn bằng dấu chấm   vd: 214000 -> "214.000"
-       data-prefix : tiền tố                          vd: "&lt; "
-       data-suffix : hậu tố                           vd: "%", " giây"
-       data-delay  : trễ trước khi chạy (ms)          vd: 130
-       data-dur    : thời lượng (ms, mặc định 1500)
-  ------------------------------------------------- */
-  var nums = document.querySelectorAll('[data-count]');
+  function applyLang(next){
+    lang = next;
+    document.documentElement.lang = next;
+    document.documentElement.setAttribute('data-lang', next);
+    try { localStorage.setItem(STORE_KEY, next); } catch (e) {}
+
+    document.title = t('meta.title');
+    var md = document.getElementById('metaDesc');
+    if (md) md.setAttribute('content', t('meta.desc'));
+
+    each('[data-i18n]',      function(el){ el.textContent = t(el.getAttribute('data-i18n')); });
+    each('[data-i18n-html]', function(el){ el.innerHTML   = t(el.getAttribute('data-i18n-html')); });
+    each('[data-i18n-ph]',   function(el){ el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph'))); });
+    each('[data-i18n-aria]', function(el){ el.setAttribute('aria-label',  t(el.getAttribute('data-i18n-aria'))); });
+    each('[data-i18n-alt]',  function(el){ el.setAttribute('alt',         t(el.getAttribute('data-i18n-alt'))); });
+
+    // hậu tố của số đếm phụ thuộc ngôn ngữ (" วินาที" / " sec")
+    each('[data-count]', function(el){
+      var k = el.getAttribute('data-suffix-key');
+      if (k) el.setAttribute('data-suffix', t(k));
+      setupCounter(el);
+    });
+
+    each('.langsw button', function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-setlang') === next ? 'true' : 'false');
+    });
+  }
+
+  function each(sel, fn){ Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
+
+  each('.langsw button', function(b){
+    b.addEventListener('click', function(){
+      var next = b.getAttribute('data-setlang');
+      if (next !== lang) applyLang(next);
+    });
+  });
+
+  /* ================= COUNTERS ================= */
   var noMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function fmtVN(v, dec, sep){
+  // Dấu phẩy hàng nghìn + dấu chấm thập phân (chuẩn dùng cho THB, đúng cho cả TH và EN)
+  function fmtNum(v, dec, sep){
     var parts = v.toFixed(dec).split('.');
-    if (sep) parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    return parts.length > 1 ? parts[0] + ',' + parts[1] : parts[0];
+    if (sep) parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return parts.join('.');
   }
 
-  function runCount(el){
-    if (el.__counted) return;        // chỉ chạy một lần cho mỗi phần tử
-    el.__counted = true;
+  // Đọc lại thuộc tính, dựng hàm render, khoá bề rộng theo giá trị cuối để
+  // số tăng dần không làm nhảy layout. Gọi lại được mỗi khi đổi ngôn ngữ.
+  function setupCounter(el){
     var target = parseFloat(el.getAttribute('data-count'));
-    var dec    = parseInt(el.getAttribute('data-dec') || '0', 10);
-    var sep    = el.getAttribute('data-sep') === '1';
-    var pre    = el.getAttribute('data-prefix') || '';
-    var suf    = el.getAttribute('data-suffix') || '';
-    var delay  = parseInt(el.getAttribute('data-delay') || '0', 10);
-    var dur    = parseInt(el.getAttribute('data-dur') || '1500', 10);
     if (isNaN(target)) return;
+    var dec = parseInt(el.getAttribute('data-dec') || '0', 10);
+    var sep = el.getAttribute('data-sep') === '1';
+    var pre = el.getAttribute('data-prefix') || '';
+    var suf = el.getAttribute('data-suffix') || '';
 
-    function render(v){ el.textContent = pre + fmtVN(v, dec, sep) + suf; }
+    el.__target = target;
+    el.__render = function(v){ el.textContent = pre + fmtNum(v, dec, sep) + suf; };
 
-    // Khoá bề rộng theo giá trị cuối để chữ số tăng dần không làm nhảy layout
-    render(target);
+    el.style.minWidth = '';
+    el.__render(target);
     el.style.display = 'inline-block';
     el.style.fontVariantNumeric = 'tabular-nums';
     if (el.offsetWidth) el.style.minWidth = el.offsetWidth + 'px';
 
-    if (noMotion) return;            // tôn trọng prefers-reduced-motion: giữ số cuối
-    render(0);
+    // chưa đếm thì hiện 0 (trừ khi người dùng tắt hiệu ứng chuyển động)
+    if (!el.__counted && !noMotion) el.__render(0);
+  }
 
-    var done = false;
-    function finish(){ if (!done) { done = true; render(target); } }
+  function runCount(el){
+    if (el.__counted || !el.__render) return;
+    el.__counted = true;
+    if (noMotion) { el.__render(el.__target); return; }
+
+    var delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+    var dur   = parseInt(el.getAttribute('data-dur') || '1500', 10);
+    var done  = false;
+    function finish(){ if (!done) { done = true; el.__render(el.__target); } }
 
     setTimeout(function(){
       var start = null;
@@ -1094,50 +1070,79 @@ footer.site a:hover{color:#fff}
         if (done) return;
         if (start === null) start = ts;
         var p = Math.min((ts - start) / dur, 1);
-        render(target * (1 - Math.pow(1 - p, 3)));   // easeOutCubic
+        el.__render(el.__target * (1 - Math.pow(1 - p, 3)));   // easeOutCubic
         if (p < 1) requestAnimationFrame(tick); else done = true;
       }
       requestAnimationFrame(tick);
-      // Chốt an toàn: nếu requestAnimationFrame bị treo (tab ẩn), vẫn hiện số cuối
-      setTimeout(finish, dur + 700);
+      setTimeout(finish, dur + 700);   // chốt an toàn nếu rAF bị treo (tab ẩn)
     }, delay);
   }
 
+  var nums = document.querySelectorAll('[data-count]');
   if ('IntersectionObserver' in window) {
-    var io2 = new IntersectionObserver(function(entries){
+    var ioNum = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
-        if (en.isIntersecting) { runCount(en.target); io2.unobserve(en.target); }
+        if (en.isIntersecting) { runCount(en.target); ioNum.unobserve(en.target); }
       });
     }, { threshold: 0.35, rootMargin: '0px 0px -40px 0px' });
-    nums.forEach(function(el){ io2.observe(el); });
+    Array.prototype.forEach.call(nums, function(el){ ioNum.observe(el); });
 
-    /* Lưới an toàn: khi nhảy nhanh qua một khối (bấm link neo, kéo nhanh thanh
-       cuộn), IntersectionObserver có thể không kịp ghi nhận phần tử nào đó và
-       con số sẽ kẹt ở 0. Quét lại những phần tử đã đi qua khung nhìn. */
+    // Lưới an toàn: nhảy nhanh qua một khối (bấm link neo, kéo mạnh thanh cuộn)
+    // có thể khiến IntersectionObserver không kịp ghi nhận, số sẽ kẹt ở 0.
     var sweepAt = 0;
     function sweep(){
-      var t = (window.performance && performance.now) ? performance.now() : 0;
-      if (t && t - sweepAt < 180) return;
-      sweepAt = t;
+      var now = (window.performance && performance.now) ? performance.now() : 0;
+      if (now && now - sweepAt < 180) return;
+      sweepAt = now;
       var left = 0;
-      nums.forEach(function(el){
+      Array.prototype.forEach.call(nums, function(el){
         if (el.__counted) return;
         if (el.getBoundingClientRect().top < window.innerHeight - 40) {
-          runCount(el);
-          io2.unobserve(el);
+          runCount(el); ioNum.unobserve(el);
         } else left++;
       });
       if (!left) window.removeEventListener('scroll', sweep);
     }
     window.addEventListener('scroll', sweep, { passive: true });
   } else {
-    nums.forEach(runCount);
+    Array.prototype.forEach.call(nums, runCount);
   }
 
-  /* ---------- video (mock) ---------- */
-  var player   = document.getElementById('player');
-  var video    = document.getElementById('promoVideo');
-  var overlay  = document.getElementById('playOverlay');
+  /* ================= NAV ================= */
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('mainnav');
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function(e){
+    if (e.target.tagName === 'A' || e.target.closest('a')) {
+      nav.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  /* ================= REVEAL ================= */
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var ioRev = new IntersectionObserver(function(entries){
+      entries.forEach(function(en, i){
+        if (en.isIntersecting) {
+          en.target.style.transitionDelay = Math.min(i * 70, 280) + 'ms';
+          en.target.classList.add('is-in');
+          ioRev.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    Array.prototype.forEach.call(items, function(el){ ioRev.observe(el); });
+  } else {
+    Array.prototype.forEach.call(items, function(el){ el.classList.add('is-in'); });
+  }
+
+  /* ================= VIDEO (mock) ================= */
+  var player  = document.getElementById('player');
+  var video   = document.getElementById('promoVideo');
+  var overlay = document.getElementById('playOverlay');
   function togglePlay(){
     if (video.paused) {
       var p = video.play();
@@ -1155,42 +1160,41 @@ footer.site a:hover{color:#fff}
   video.addEventListener('pause', function(){ overlay.classList.remove('is-hidden'); });
   video.addEventListener('ended', function(){ overlay.classList.remove('is-hidden'); });
   video.addEventListener('error', function(){ player.classList.add('has-error'); });
-  // nếu tất cả <source> lỗi, sự kiện error bắn ở source cuối
   Array.prototype.forEach.call(video.querySelectorAll('source'), function(s, i, arr){
     s.addEventListener('error', function(){
       if (i === arr.length - 1) player.classList.add('has-error');
     });
   });
 
-  /* ---------- amount formatting (1.234.567) ---------- */
+  /* ================= AMOUNT (THB: 1,234,567) ================= */
   var amount = document.getElementById('amount');
   amount.addEventListener('input', function(){
     var digits = amount.value.replace(/\D/g, '').slice(0, 12);
-    amount.value = digits ? digits.replace(/\B(?=(\d{3})+(?!\d))/g, '.') : '';
+    amount.value = digits ? digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
   });
 
-  /* ---------- form validation (client-side only) ---------- */
-  var form   = document.getElementById('fineForm');
-  var shell  = document.getElementById('formShell');
-  var okBox  = document.getElementById('formOk');
-  var code   = document.getElementById('caseCode');
+  /* ================= FORM (client-side only) ================= */
+  var form  = document.getElementById('fineForm');
+  var shell = document.getElementById('formShell');
+  var okBox = document.getElementById('formOk');
+  var code  = document.getElementById('caseCode');
 
   function fieldOf(input){ return input.closest('[data-field]'); }
 
   function validate(input){
     var wrap = fieldOf(input);
     if (!wrap) return true;
-    var ok = true;
-
+    var ok;
     if (input.id === 'amount') {
       var digits = input.value.replace(/\D/g, '');
-      ok = digits.length >= 4 && parseInt(digits, 10) > 0;
+      ok = digits.length >= 2 && parseInt(digits, 10) > 0;        // tối thiểu 10 THB
+    } else if (input.id === 'idnum') {
+      ok = input.value.replace(/\D/g, '').length === 13;          // CMND Thái Lan: 13 số
     } else if (input.type === 'checkbox') {
       ok = !input.required || input.checked;
     } else {
       ok = input.checkValidity();
     }
-
     wrap.classList.toggle('is-invalid', !ok);
     return ok;
   }
@@ -1219,9 +1223,9 @@ footer.site a:hover{color:#fff}
     // demo: sinh mã hồ sơ giả lập, không gửi dữ liệu đi đâu
     var rnd = String(Math.floor(Math.random() * 900000) + 100000);
     var d = new Date();
-    var y = String(d.getFullYear()).slice(2);
+    var y = String(d.getFullYear() + 543).slice(2);   // năm Phật lịch (B.E.)
     var m = ('0' + (d.getMonth() + 1)).slice(-2);
-    code.textContent = 'KB' + y + m + '-' + rnd;
+    code.textContent = 'STP' + y + m + '-' + rnd;
     shell.classList.add('is-off');
     okBox.classList.add('is-on');
     okBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1236,6 +1240,9 @@ footer.site a:hover{color:#fff}
     shell.classList.remove('is-off');
     document.getElementById('fullname').focus();
   });
+
+  /* ================= GO ================= */
+  applyLang(lang);
 })();
 </script>
 </body>
