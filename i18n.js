@@ -21,6 +21,7 @@ th: {
   'meta.desc': 'หน้าตัวอย่างพอร์ทัลบริการคลังออนไลน์: ระบบฉลาดและเสถียรที่สุด บริการช่วยเหลือ 24/7 โปร่งใสและรวดเร็วในทุกขั้นตอน ชื่อหน่วยงานในหน้านี้เป็นชื่อสมมติ',
 
   'demo.bar': '⚠️ <b>หน้าตัวอย่าง / งานออกแบบจำลอง</b> — “Siam Treasury Portal” เป็นชื่อสมมติ ไม่ใช่หน่วยงานจริง ข้อมูล รูปภาพ และแบบฟอร์มทั้งหมดเป็นข้อมูลจำลอง ไม่มีการส่งข้อมูลไปที่ใด',
+  'demo.bar.live': '⚠️ <b>หน้าตัวอย่าง</b> — “Siam Treasury Portal” เป็นชื่อสมมติ ไม่ใช่หน่วยงานจริง ตัวเลขและรูปภาพเป็นข้อมูลจำลอง แต่ <b>แบบฟอร์มส่งข้อมูลจริงและบันทึกลงฐานข้อมูล</b>',
 
   'top.status': 'ระบบทำงานปกติ — อัปไทม์ 99.99%',
   'top.hotline': 'สายด่วน 24 ชม.:',
@@ -236,11 +237,18 @@ th: {
   'form.agree': 'ข้าพเจ้ายืนยันว่าข้อมูลข้างต้นถูกต้อง และยินยอมให้หน่วยงานคลังใช้ข้อมูลนี้เพื่อดำเนินการชำระค่าปรับ',
   'form.agree.err': 'กรุณายอมรับเงื่อนไขก่อนส่งแบบฟอร์ม',
   'form.submit': 'ส่งแบบฟอร์มและรับรหัสคำขอ',
+  'form.sending': 'กำลังส่ง…',
+  'form.err.network': 'ส่งข้อมูลไม่สำเร็จ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตแล้วลองอีกครั้ง',
+  'form.err.rate': 'คุณส่งแบบฟอร์มบ่อยเกินไป กรุณารอสักครู่แล้วลองอีกครั้ง',
+  'form.err.server': 'ระบบขัดข้องชั่วคราว กรุณาลองใหม่ หรือโทรสายด่วน +66 2 000 0000',
+  'form.err.check': 'กรุณาตรวจสอบข้อมูลที่ทำเครื่องหมายไว้',
   'form.disclaimer': 'นี่คือแบบฟอร์มตัวอย่าง ข้อมูลถูกประมวลผลในเบราว์เซอร์ของคุณเท่านั้น และไม่ถูกส่งไปยังเซิร์ฟเวอร์ใด',
+  'form.disclaimer.live': 'ข้อมูลที่คุณกรอกจะถูกส่งและจัดเก็บในระบบเพื่อดำเนินการคำขอ กรุณาอย่ากรอกเลขบัตร รหัสผ่าน หรือ OTP',
   'form.ok.h3': 'รับแบบฟอร์มของคุณแล้ว',
   'form.ok.p1': 'รหัสติดตามคำขอของคุณคือ ',
   'form.ok.p2': ' เจ้าหน้าที่จะติดต่อกลับภายใน 30 นาที แม้นอกเวลาราชการ',
   'form.ok.note': '(หน้าเดโม — ไม่มีการส่งข้อมูลไปที่ใด)',
+  'form.ok.note.live': '(ข้อมูลของคุณถูกบันทึกลงระบบแล้ว)',
   'form.ok.again': 'ส่งแบบฟอร์มอีกครั้ง',
 
   'faq.eyebrow': 'คำถามที่พบบ่อย',
@@ -289,6 +297,7 @@ en: {
   'meta.desc': 'Demo page for a treasury e-service portal: the smartest and most stable system, 24/7 support, transparent and fast at every step. The agency name on this page is fictional.',
 
   'demo.bar': '⚠️ <b>DEMO / DESIGN MOCKUP</b> — “Siam Treasury Portal” is a fictional name, not a real agency. All figures, images and forms are simulated and nothing is submitted anywhere.',
+  'demo.bar.live': '⚠️ <b>DEMO</b> — “Siam Treasury Portal” is a fictional name, not a real agency. Figures and images are simulated, but <b>this form really submits and stores your data</b>.',
 
   'top.status': 'All systems operational — uptime 99.99%',
   'top.hotline': '24/7 hotline:',
@@ -504,11 +513,18 @@ en: {
   'form.agree': 'I confirm the information above is correct and consent to the treasury office using it to process my fine payment.',
   'form.agree.err': 'You must agree before submitting the form.',
   'form.submit': 'Submit & get case code',
+  'form.sending': 'Sending…',
+  'form.err.network': 'Could not send the form. Check your internet connection and try again.',
+  'form.err.rate': 'You have submitted too many times. Please wait a moment and try again.',
+  'form.err.server': 'Something went wrong on our side. Please try again, or call +66 2 000 0000.',
+  'form.err.check': 'Please check the fields marked below.',
   'form.disclaimer': 'This is a demo form — data is processed only in your browser and is never sent to any server.',
+  'form.disclaimer.live': 'The details you enter are sent to our system and stored in order to process your case. Never enter a card number, password or OTP.',
   'form.ok.h3': 'Your form has been received',
   'form.ok.p1': 'Your case tracking code is ',
   'form.ok.p2': '. A specialist will contact you within 30 minutes, including outside office hours.',
   'form.ok.note': '(Demo — no data was sent anywhere.)',
+  'form.ok.note.live': '(Your details have been stored in the system.)',
   'form.ok.again': 'Submit another form',
 
   'faq.eyebrow': 'FAQ',

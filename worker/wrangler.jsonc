@@ -1,0 +1,47 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "stp-fine-intake",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-04",
+
+  // Log + trace trong dashboard Workers
+  "observability": { "enabled": true },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "stp-fines",
+      // Dán database_id do `wrangler d1 create stp-fines` in ra
+      "database_id": "PASTE_DATABASE_ID_HERE",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // Chặn spam. Lưu ý: period CHỈ nhận 10 hoặc 60 (giây), và bộ đếm là
+  // theo từng địa điểm Cloudflare chứ không phải toàn cầu — đây là lớp
+  // giảm tải, không phải hàng rào chính xác.
+  "ratelimits": [
+    {
+      "name": "SUBMIT_LIMITER",
+      "namespace_id": "1001",
+      "simple": { "limit": 5, "period": 60 }
+    }
+  ],
+
+  "vars": {
+    // Danh sách origin được phép gọi API, phân tách bằng dấu phẩy.
+    // Đổi thành domain thật khi deploy. Để "*" chỉ nên dùng khi thử.
+    "ALLOWED_ORIGINS": "http://localhost:8788,http://127.0.0.1:8788",
+
+    // "true" = bắt buộc số CMND Thái Lan đúng checksum mod-11.
+    // Để "false" cho bản demo vì người thử hay nhập số bừa.
+    "STRICT_THAI_ID": "false",
+
+    // Giới hạn kích thước body (byte)
+    "MAX_BODY_BYTES": "16384"
+  }
+
+  // SECRET (không đặt ở đây, dùng `wrangler secret put`):
+  //   IP_HASH_SALT     - bắt buộc: muối để băm IP, xem README
+  //   TURNSTILE_SECRET - tuỳ chọn: có thì Worker sẽ bắt buộc xác thực Turnstile
+}

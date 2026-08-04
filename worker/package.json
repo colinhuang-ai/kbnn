@@ -1,0 +1,22 @@
+{
+  "name": "stp-fine-intake",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker nhận phiếu nộp tiền phạt từ landing page và lưu vào D1 (demo)",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "types": "wrangler types",
+    "tail": "wrangler tail",
+    "db:create": "wrangler d1 create stp-fines",
+    "db:migrate:local": "wrangler d1 migrations apply stp-fines --local",
+    "db:migrate:remote": "wrangler d1 migrations apply stp-fines --remote",
+    "db:list": "wrangler d1 execute stp-fines --local --command=\"SELECT id, case_code, full_name, amount_thb, status, created_at FROM fine_submissions ORDER BY id DESC LIMIT 20\""
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260730.1",
+    "typescript": "^5.6.0",
+    "wrangler": "^4.36.0"
+  }
+}

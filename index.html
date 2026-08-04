@@ -324,6 +324,13 @@ html[lang="th"] .quote p{font-style:normal}
   padding:13px 15px;font-size:.83rem;color:#7a5a0d;margin-bottom:22px;
 }
 .notice-safe svg{width:19px;height:19px;flex-shrink:0;margin-top:3px}
+.form-error{
+  display:none;margin:14px 0 0;padding:12px 15px;border-radius:10px;
+  background:#fff1f1;border:1px solid #f5c2c2;color:#9b1c1c;
+  font-size:.86rem;font-weight:600;text-align:left;
+}
+.form-error.is-on{display:block}
+.btn[disabled]{opacity:.62;cursor:progress;transform:none!important;box-shadow:none}
 .form-ok{display:none;text-align:center;padding:36px 14px}
 .form-ok.is-on{display:block}
 .form-ok__ico{width:66px;height:66px;border-radius:50%;background:#eaf7f0;display:grid;place-items:center;margin:0 auto 18px}
@@ -865,6 +872,7 @@ footer.site a:hover{color:#fff}
             </label>
 
             <button type="submit" class="btn btn--primary btn--lg btn--block" id="submitBtn" data-i18n="form.submit"></button>
+            <p class="form-error" id="formError" role="alert" aria-live="assertive"></p>
             <p style="font-size:.78rem;color:var(--ink-faint);text-align:center;margin:14px 0 0" data-i18n="form.disclaimer"></p>
           </form>
         </div>
@@ -968,6 +976,12 @@ footer.site a:hover{color:#fff}
   var DEFAULT_LANG = 'th';                 // đổi thành 'en' nếu muốn mặc định tiếng Anh
   var LANGS = ['th','en'];
   var STORE_KEY = 'stp-lang';
+
+  // Endpoint của Cloudflare Worker (thư mục worker/). Để RỖNG thì form chạy
+  // chế độ demo: chỉ sinh mã hồ sơ trong trình duyệt, không gửi đi đâu.
+  // Điền URL để gửi thật, ví dụ:
+  //   'https://stp-fine-intake.<subdomain>.workers.dev/api/fines'
+  var API_ENDPOINT = '';
 
   /* ================= I18N ================= */
   var dictAll = window.I18N || {};
@@ -1209,8 +1223,76 @@ footer.site a:hover{color:#fff}
     input.addEventListener('change', function(){ if (input.type === 'checkbox') validate(input); });
   });
 
+  var formError = document.getElementById('formError');
+  var submitBtn = document.getElementById('submitBtn');
+
+  function showFormError(key){
+    formError.textContent = t(key);
+    formError.classList.add('is-on');
+  }
+  function clearFormError(){
+    formError.classList.remove('is-on');
+    formError.textContent = '';
+  }
+
+  function showSuccess(caseCode){
+    code.textContent = caseCode;
+    shell.classList.add('is-off');
+    okBox.classList.add('is-on');
+    okBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Chỉ dùng ở chế độ demo (API_ENDPOINT rỗng). Khi gửi thật, mã hồ sơ do
+  // Worker sinh ra để đảm bảo duy nhất trong database.
+  function localCaseCode(){
+    var d = new Date();
+    return 'STP' + String(d.getFullYear() + 543).slice(2)
+                 + ('0' + (d.getMonth() + 1)).slice(-2)
+                 + '-' + String(Math.floor(Math.random() * 900000) + 100000);
+  }
+
+  function val(id){ return document.getElementById(id).value; }
+
+  function buildPayload(){
+    return {
+      fullname:  val('fullname').trim(),
+      idnum:     val('idnum').trim(),
+      phone:     val('phone').trim(),
+      email:     val('email').trim(),
+      decision:  val('decision').trim(),
+      issuedate: val('issuedate'),
+      agency:    val('agency'),
+      province:  val('province'),
+      amount:    val('amount'),
+      note:      val('note').trim(),
+      agree:     document.getElementById('agree').checked,
+      lang:      lang
+    };
+  }
+
+  // Worker trả về fields = { <id của input>: <mã lỗi> } nên đánh dấu được
+  // trực tiếp, không cần bảng ánh xạ tên field.
+  function markServerErrors(fields){
+    var first = null;
+    Object.keys(fields).forEach(function(id){
+      var el = document.getElementById(id);
+      var wrap = el && el.closest('[data-field]');
+      if (wrap) {
+        wrap.classList.add('is-invalid');
+        if (!first) first = el;
+      }
+    });
+    showFormError('form.err.check');
+    if (first) {
+      first.focus();
+      first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    clearFormError();
+
     var firstBad = null;
     Array.prototype.forEach.call(watched, function(input){
       if (!validate(input) && !firstBad) firstBad = input;
@@ -1220,15 +1302,31 @@ footer.site a:hover{color:#fff}
       firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    // demo: sinh mã hồ sơ giả lập, không gửi dữ liệu đi đâu
-    var rnd = String(Math.floor(Math.random() * 900000) + 100000);
-    var d = new Date();
-    var y = String(d.getFullYear() + 543).slice(2);   // năm Phật lịch (B.E.)
-    var m = ('0' + (d.getMonth() + 1)).slice(-2);
-    code.textContent = 'STP' + y + m + '-' + rnd;
-    shell.classList.add('is-off');
-    okBox.classList.add('is-on');
-    okBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    if (!API_ENDPOINT) { showSuccess(localCaseCode()); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = t('form.sending');
+
+    fetch(API_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(buildPayload())
+    }).then(function(res){
+      return res.json().catch(function(){ return null; }).then(function(data){
+        return { status: res.status, ok: res.ok, data: data };
+      });
+    }).then(function(r){
+      if (r.ok && r.data && r.data.ok && r.data.case_code) { showSuccess(r.data.case_code); return; }
+      if (r.status === 429) { showFormError('form.err.rate'); return; }
+      if (r.status === 422 && r.data && r.data.fields) { markServerErrors(r.data.fields); return; }
+      showFormError('form.err.server');
+    }).catch(function(){
+      showFormError('form.err.network');       // mất mạng, CORS, DNS…
+    }).then(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = t('form.submit');
+    });
   });
 
   document.getElementById('againBtn').addEventListener('click', function(){
@@ -1236,12 +1334,26 @@ footer.site a:hover{color:#fff}
     Array.prototype.forEach.call(form.querySelectorAll('.is-invalid'), function(el){
       el.classList.remove('is-invalid');
     });
+    clearFormError();
     okBox.classList.remove('is-on');
     shell.classList.remove('is-off');
     document.getElementById('fullname').focus();
   });
 
   /* ================= GO ================= */
+
+  // Khi đã bật API_ENDPOINT thì dữ liệu THẬT SỰ được gửi và lưu, nên phải
+  // đổi các câu đang nói "không gửi đi đâu" — nếu không trang sẽ nói sai.
+  if (API_ENDPOINT) {
+    [['form.disclaimer','form.disclaimer.live'],
+     ['form.ok.note','form.ok.note.live']].forEach(function(pair){
+      var el = document.querySelector('[data-i18n="' + pair[0] + '"]');
+      if (el) el.setAttribute('data-i18n', pair[1]);
+    });
+    var bar = document.querySelector('[data-i18n-html="demo.bar"]');
+    if (bar) bar.setAttribute('data-i18n-html', 'demo.bar.live');
+  }
+
   applyLang(lang);
 })();
 </script>
